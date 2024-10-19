@@ -1,0 +1,19 @@
+<div class="col-lg-4 col-md-4">
+	<div class="card border-dark mb-3" style="max-width: 20rem;padding: 0;">
+		<div class="card-header">{{ ad.rooms }}
+			chambres,
+			<strong>{{ ad.price | amount }}
+				/ nuit</strong>
+			<br>
+			<small>Pas encore noté</small>
+		</div>
+		{% if not ad.images is empty %}
+			<img src="{{ vich_uploader_asset(ad.images.first, 'imageFile') }}" alt="{{ ad.name }}" class="img-fluid">
+		{% endif %}
+		<div class="card-body">
+			<h4 class="card-title">{{ ad.name }}</h4>
+			<p class="card-text">{{ ad.introduction|raw|nl2br|striptags|u.truncate(100, '...') }}</p>
+			<a href="{{ path('ads_show', {'slug': ad.slug}) }}" class="btn btn-secondary">En savoir plus</a>
+		</div>
+	</div>
+</div>
