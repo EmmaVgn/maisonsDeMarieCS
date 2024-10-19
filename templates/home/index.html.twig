@@ -4,27 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container my-5">
-		<h2 class="text-center mb-4">Nos meilleures réservations</h2>
-		<div class="row">
-			{% for i in 1..3 %}
-				<div class="col-lg-4 col-md-4 mb-4">
-					<div class="card border-dark shadow-sm">
-						<div class="card-header text-center">
-							<strong>{{ i }}
-								chambres</strong><br>
-							<strong>49€ / nuit</strong><br>
-							<small>Pas encore noté</small>
-						</div>
-						<img src="https://placehold.co/600x400/png" class="card-img-top" alt="Image de réservation {{ i }}">
-						<div class="card-body text-center">
-							<h4 class="card-title">Très belle villa</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, earum?</p>
-							<a href="#" class="btn btn-secondary">En savoir plus</a>
-						</div>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+	{% include "home/logements.html.twig" %}
+	{% include "home/bienvenu.html.twig" %}
+	{% include "_partials/_services.html.twig" %}
 {% endblock %}
