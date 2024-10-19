@@ -4,7 +4,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Ajoute box-sizing pour un meilleur contrôle des dimensions */
+  box-sizing: border-box;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
   position: relative;
   height: 100%;
   text-decoration: none;
-  background-color: #f4f4f4; /* Remplace par votre couleur de fond souhaitée */
+  background-color: #f4f4f4;
 }
 
 a {
@@ -30,44 +30,42 @@ h4 {
 # Navbar
 --------------------------------------------------------------*/
 #navbar {
-  position: fixed; /* Positionne la navbar de manière fixe */
-  width: 100%; /* Prend toute la largeur de la fenêtre */
-  z-index: 10; /* Assure que la navbar est au-dessus du diaporama */
-}
-
-#backgroundCarousel .carousel-item {
-  height: 100vh; /* Hauteur de la fenêtre */
-}
-
-#backgroundCarousel img {
-  object-fit: cover; /* Couvre tout l'espace sans déformation */
-  height: 90vh; /* Hauteur de la fenêtre */
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.5); /* Fond blanc semi-transparent */
+  backdrop-filter: blur(
+    10px
+  ); /* Flou d'arrière-plan pour un effet esthétique (facultatif) */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour un peu de profondeur */
 }
 
 .navbar-custom {
-  display: flex; /* Utilise Flexbox pour aligner les éléments */
-  align-items: flex-start; /* Aligne les éléments en haut */
-  justify-content: space-between; /* Espace entre les éléments pour une disposition fluide */
-  padding: 10px 20px; /* Ajuste le rembourrage pour l'espacement souhaité */
-  position: absolute; /* Positionne la navbar en haut de l'image */
-  top: 0; /* Aligne la navbar en haut */
-  left: 0; /* Aligne la navbar à gauche */
-  right: 0; /* Aligne la navbar à droite */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 
 .logo {
-  height: 40px; /* Ajuste la hauteur du logo */
-  margin-right: 10px; /* Espace entre le logo et le texte */
+  height: 40px;
+  margin-right: 10px;
 }
 
 .navbar-nav {
-  margin-top: 0; /* Retire tout espacement supérieur */
+  margin-top: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 15px;
 }
 
 .nav-link {
-  font-size: 18px; /* Augmente la taille de police des liens */
-  color: white; /* Couleur des liens */
-  transition: color 0.3s; /* Transition pour les liens */
+  font-size: 18px;
+  color: #333; /* Couleur des liens sombre pour plus de contraste */
+  transition: color 0.3s;
 }
 
 .nav-link:hover {
@@ -75,20 +73,23 @@ h4 {
 }
 
 /*--------------------------------------------------------------
-# Footer
+# Jumbotron
 --------------------------------------------------------------*/
-#footer {
-  background-color: #343a40; /* Couleur de fond du footer */
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 60px 0;
+  /* Ajuster pour ne pas chevaucher la navbar */
+  position: relative;
 }
 
-#footer .list-inline-item {
-  margin: 0 15px; /* Espace entre les éléments de la liste */
+/*--------------------------------------------------------------
+# Card
+--------------------------------------------------------------*/
+.card {
+  transition: transform 0.3s;
 }
 
-#footer a {
-  text-decoration: none; /* Pas de soulignement sur les liens */
-}
-
-#footer a:hover {
-  text-decoration: underline; /* Souligner les liens au survol */
+.card:hover {
+  transform: scale(1.05);
 }
