@@ -26,6 +26,9 @@ h4 {
   font-family: "Montserrat", serif;
 }
 
+.custom-top {
+  margin-top: 100px;
+}
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #f8f9fa; /* Couleur de fond légère */
@@ -1085,9 +1088,122 @@ gmpx-split-layout input:focus::placeholder {
 /*--------------------------------------------------------------
 # Ad - calendrier
 --------------------------------------------------------------*/
+/* Changez la couleur de fond du calendrier */
+.flatpickr-calendar {
+  background-color: #fff; /* Fond blanc */
+}
+
+/* Modifiez la couleur des jours */
+.flatpickr-day {
+  color: #333; /* Couleur du texte */
+}
+
+/* Changez la couleur de fond des jours sélectionnés */
+.flatpickr-day.selected,
+.flatpickr-day:focus {
+  background-color: #777b7e; /* Couleur Bootstrap primary */
+  color: #fff; /* Texte blanc */
+}
+
+/* Changez la couleur des jours désactivés */
+.flatpickr-day.disabled {
+  background-color: #f5f5f5; /* Fond gris clair */
+  color: #ccc; /* Texte gris */
+}
+
+/* Stylez le champ d'entrée */
 .flatpickr-input {
-  border: 1px solid #ccc; /* Ajout d'une bordure */
-  padding: 10px; /* Ajout de rembourrage */
-  width: 100%; /* Largeur 100% */
-  box-sizing: border-box; /* Pour que le padding ne modifie pas la largeur totale */
+  border: 1px solid #112030; /* Bordure bleue */
+  border-radius: 4px; /* Coins arrondis */
+  padding: 10px; /* Espacement intérieur */
+  font-size: 16px; /* Taille de police */
+}
+
+/* Style global pour la page de réservation */
+body {
+  background-color: #f8f9fa; /* Couleur de fond douce */
+}
+
+/*--------------------------------------------------------------
+# Styles pour le formulaire de paiement
+--------------------------------------------------------------*/
+
+#payment-form {
+  margin-top: 20px; /* Espacement supérieur pour le formulaire */
+}
+
+.spinner {
+  display: none; /* Cacher le spinner par défaut */
+}
+
+.spinner.hidden {
+  display: inline-block; /* Afficher le spinner lorsque nécessaire */
+}
+
+/* Style pour le bouton de paiement */
+#submit {
+  background-color: #007bff; /* Couleur du bouton */
+  border: none; /* Supprime la bordure */
+  border-radius: 4px; /* Coins arrondis */
+  padding: 10px 15px; /* Espacement intérieur */
+  color: #fff; /* Couleur du texte */
+  font-size: 16px; /* Taille de la police */
+}
+
+#submit:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+#payment-message {
+  color: red; /* Couleur du message de paiement */
+}
+
+/* Style pour les alertes */
+.alert {
+  margin-top: 20px; /* Espacement au-dessus des alertes */
+}
+
+/* Style pour l'image de réservation */
+.image-reservation {
+  object-fit: cover; /* Ajuste l'image pour qu'elle couvre le conteneur */
+  height: 100%; /* Assure que l'image remplit tout le conteneur */
+  border-radius: 8px; /* Coins arrondis pour les images */
+}
+
+/*--------------------------------------------------------------
+# Styles pour les cartes de réservation
+--------------------------------------------------------------*/
+.card {
+  border: 1px solid #e0e0e0; /* Bordure légère autour de la carte */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de profondeur */
+}
+
+.card-body {
+  padding: 20px; /* Espacement intérieur pour le contenu de la carte */
+}
+
+/* Style pour le texte de la carte */
+.card-title {
+  color: #333; /* Couleur du titre */
+}
+
+.guest-reservation {
+  color: #555; /* Couleur du texte des informations sur les invités */
+}
+
+/* Style pour les détails de prix */
+h5 {
+  color: #007bff; /* Couleur du titre des détails de prix */
+}
+
+/* Style pour le total */
+.fw-bold {
+  color: #000; /* Couleur pour le total */
+  font-size: 1.2em; /* Taille de police augmentée pour le total */
+}
+
+/* Ajout de marges */
+.mb-3 {
+  margin-bottom: 1rem; /* Marge inférieure pour espacer les cartes */
 }

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<div class="container my-4">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="{{ path('homepage') }}">Accueil</a>
@@ -40,9 +40,7 @@
 					<div class="equipment-wrapper">
 						<section>
 							<div class="title-equipment-wrapper">
-								<div class="title-equipment-content">
-									Ce que propose ce logement
-								</div>
+								<div class="title-equipment-content">Ce que propose ce logement</div>
 							</div>
 							{% include "_partials/_list_equipment_container.html.twig" %}
 							{% if ad.equipment | length > 8 %}
@@ -62,7 +60,7 @@
 			</div>
 			<div class="col-md-4 position-relative">
 				<div class="card border-dark mb-3 pos-sticky" style="padding: 0;">
-					<div class="card-header" id="priceValue">
+					<div class="card-header text-center" id="priceValue">
 						<strong>{{ ad.price | amount }}</strong>
 						par nuit
 					</div>
@@ -70,7 +68,7 @@
 						<h4 class="card-title"></h4>
 						<p class="card-text">
 							{{ form_start(form, {'action': path('booking_confirm', {'slug': ad.slug})}) }}
-							{{ form_row(form.startDateAt)}}
+							{{ form_row(form.startDateAt) }}
 							{{ form_row(form.endDateAt) }}
 							<input type="hidden" name="ad_slug" value="{{ ad.slug }}">
 							<div class="text-center">Aucun montant ne vous sera débité pour le moment</div>
@@ -85,15 +83,15 @@
 									nuits</div>
 								<div>
 									<span id="amount">...</span>
-									&euro;
-								</div>
+									&euro;</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Modal -->
+
+		<!-- Modal pour le portfolio -->
 		<div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
@@ -107,11 +105,9 @@
 			</div>
 		</div>
 
-		<section>
+		<section class="my-4">
 			<div class="title-equipment-wrapper">
-				<div class="title-equipment-content">
-					Où se situe le logement
-				</div>
+				<div class="title-equipment-content">Où se situe le logement</div>
 				<div>
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.463248357757!2d0.5842170768094005!3d44.66931697107203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aae145148e5047%3A0x1f69e49e3cbc07e0!2sLes%20maisons%20de%20Marie!5e0!3m2!1sfr!2sfr!4v1716988782465!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
@@ -128,5 +124,4 @@
 var notAvailableDays = [];{% if notAvailableDays is defined %}notAvailableDays = [{% for day in notAvailableDays %}"{{ day|date('d.m.Y') }}"{% if not loop.last %},{% endif %}{% endfor %}];{% endif %}
 	</script>
 	<script src="{{ asset('assets/js/main.js') }}" defer></script>
-	{# <script src="{{ asset('assets/js/calendar.js') }}" defer></script> #}
 {% endblock %}
