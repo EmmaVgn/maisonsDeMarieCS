@@ -8,7 +8,7 @@
 	<h1>Voyages</h1>
 
 	{% if futureBookings is empty and pastBookings is empty %}
-		{% include "partials/_no_booking.html.twig" %}
+		{% include "_partials/_no_booking.html.twig" %}
 	{% endif %}
 
 	{% if futureBookings is not empty or pastBookings is not empty %}
@@ -27,7 +27,7 @@
 				</h2>
 				<div class="d-flex justify-content-between align-items-center flex-wrap">
 					{% for b in futureBookings %}
-						{% include "partials/_list_past_and_future_booking.html.twig" %}
+						{% include "_partials/_list_past_and_future_booking.html.twig" %}
 					{% endfor %}
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 
 		{% if pastBookings is not empty %}
 			{% if displayNoBooking %}
-				{% include "partials/_no_booking.html.twig" %}
+				{% include "_partials/_no_booking.html.twig" %}
 			{% endif %}
 			<div class="row">
 				<h2 class="py-4 fs-4">
@@ -43,7 +43,7 @@
 				</h2>
 				<div class="d-flex justify-content-between align-items-center flex-wrap">
 					{% for b in pastBookings %}
-						{% include "partials/_list_past_and_future_booking.html.twig" %}
+						{% include "_partials/_list_past_and_future_booking.html.twig" %}
 					{% endfor %}
 				</div>
 			</div>

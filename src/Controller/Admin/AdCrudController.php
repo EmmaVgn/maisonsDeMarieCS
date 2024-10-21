@@ -19,6 +19,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CountryField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class AdCrudController extends AbstractCrudController
@@ -71,6 +72,21 @@ class AdCrudController extends AbstractCrudController
             TextField::new('city', 'Ville de l\'annonce')->hideOnIndex(),
             CountryField::new('country', 'Pays de l\'annonce')->hideOnIndex(),
             TextEditorField::new('content', 'Contenu de l\'annonce')->hideOnIndex(),
+            AssociationField::new('equipment', 'Equipements')
+            ->setFormTypeOptions([
+                'query_builder' => function (EntityRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('e')
+                        ->orderBy('e.name', 'ASC');
+                },
+                'choice_label' => 'name',
+                'group_by' => function ($choice, $key, $value) {
+                    return $choice->getCriteria()->getName();
+                },
+                'multiple' => true,
+                'expanded' => false,
+                // 'expanded' => true,
+                'by_reference' => false,
+            ]),
         ];
     }
 

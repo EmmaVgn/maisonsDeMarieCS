@@ -9,6 +9,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class EquipmentCrudController extends AbstractCrudController
@@ -38,6 +40,13 @@ class EquipmentCrudController extends AbstractCrudController
                     fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Criteria::class)->createQueryBuilder('c')->orderBy('c.name')
                 )
                 ->autocomplete(),
+                ImageField::new('imageName', 'Image :')
+                ->setBasePath('/images/icones')
+                ->onlyOnIndex(),
+            TextField::new('imageFile', 'Fichier SVG :')
+                ->setFormType(VichImageType::class)
+                ->setFormTypeOptions(['delete_label' => 'Supprimer le SVG'])
+                ->hideOnIndex(),
         ];
     }
 }

@@ -34,19 +34,43 @@
 							lits</li>
 					</ol>
 				</div>
-
-				<p class="mt-2">{{ ad.content | raw | nl2br }}</p>
+				<p class="add-content">{{ ad.content | raw }}</p>
+				<div class="equipment-container">
+					<hr class="equipment-hr-content">
+					<div class="equipment-wrapper">
+						<section>
+							<div class="title-equipment-wrapper">
+								<div class="title-equipment-content">
+									Ce que propose ce logement
+								</div>
+							</div>
+							{% include "_partials/_list_equipment_container.html.twig" %}
+							{% if ad.equipment | length > 8 %}
+								<div class="display-all-equipments">
+									<button type="button" class="btn-show-list" data-bs-toggle="modal" data-bs-target="#equipmentsModal">
+										Afficher les
+										{{ ad.equipment | length }}
+										équipements
+									</button>
+								</div>
+							{% endif %}
+						</section>
+					</div>
+				</div>
+				<!-- Modal -->
+				{% include "_partials/_modal_equipments.html.twig" %}
 			</div>
-			<div class="col-md-4">
-				<div class="card border-dark mb-3">
+			<div class="col-md-4 position-relative">
+				<div class="card border-dark mb-3 pos-sticky" style="padding: 0;">
 					<div class="card-header" id="priceValue">
 						<strong>{{ ad.price | amount }}</strong>
 						par nuit
 					</div>
 					<div class="card-body">
+						<h4 class="card-title"></h4>
 						<p class="card-text">
 							{{ form_start(form, {'action': path('booking_confirm', {'slug': ad.slug})}) }}
-							{{ form_row(form.startDateAt) }}
+							{{ form_row(form.startDateAt)}}
 							{{ form_row(form.endDateAt) }}
 							<input type="hidden" name="ad_slug" value="{{ ad.slug }}">
 							<div class="text-center">Aucun montant ne vous sera débité pour le moment</div>
@@ -69,7 +93,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Modal -->
 		<div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-xl">
@@ -83,15 +106,15 @@
 				</div>
 			</div>
 		</div>
-	</div>
-{% endblock %}
+	{% endblock %}
 
-{% block javascripts %}
-	{{ parent() }}
-	<script src="{{ asset('assets/js/flatpickr.min.js') }}"></script>
-	<script>
-		// Transférer les dates non disponibles à JavaScript
+	{% block javascripts %}
+		{{ parent() }}
+		<script src="{{ asset('assets/js/flatpickr.min.js') }}"></script>
+		<script>
+			// Transférer les dates non disponibles à JavaScript
 var notAvailableDays = [];{% if notAvailableDays is defined %}notAvailableDays = [{% for day in notAvailableDays %}"{{ day|date('d.m.Y') }}"{% if not loop.last %},{% endif %}{% endfor %}];{% endif %}
-	</script>
-	<script src="{{ asset('assets/js/main.js') }}" defer></script>
-{% endblock %}
+		</script>
+		<script src="{{ asset('assets/js/main.js') }}" defer></script>
+		{# <script src="{{ asset('assets/js/calendar.js') }}" defer></script> #}
+	{% endblock %}

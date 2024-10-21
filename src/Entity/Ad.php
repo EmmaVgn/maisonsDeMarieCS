@@ -65,7 +65,7 @@ class Ad
      * @var Collection<int, Equipment>
      */
     #[ORM\ManyToMany(targetEntity: Equipment::class, mappedBy: 'ads')]
-    private Collection $equipment;
+    private Collection $equipment;    
 
     public function __construct()
     {

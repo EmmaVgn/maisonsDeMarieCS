@@ -1,0 +1,32 @@
+<div class="modal fade" id="equipmentsModal" tabindex="-1" aria-labelledby="equipmentsModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content modal-list-equipment">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5 fw-bold" id="equipmentsModalLabel">Ce que propose ce logement</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				{% for criteriaName, group in equipmentsAllByCriteria %}
+					<div class="modal-body-criteria">
+						<h3 class="title-criteria">{{ criteriaName }}</h3>
+						<ul class="criteria-ul">
+							{% for equipment in group %}
+								<li>
+									<div class="each-equipment">
+										<div class="each-equipment-svg-content">
+											<div class="each-equipment-svg">
+												<img src="{{ vich_uploader_asset(equipment, 'imageFile') }}" class="img-fluid" alt="{{ equipment.name }}">
+											</div>
+										</div>
+										<div class="each-equipment-name">{{ equipment.name }}</div>
+									</div>
+								</li>
+								<div class="separator-equipment"></div>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

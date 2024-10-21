@@ -1,0 +1,27 @@
+<div class="list-equipment-container">
+	{% if ad.equipment|length <= 8 %}
+		{% for eq in ad.equipment %}
+			<div class="equipment-list-wrapper">
+				<div class="equip-list-content">
+					<div class="equip-list-content-name">{{ eq.name }}</div>
+					<div class="svg-equipment">
+						<img src="{{ vich_uploader_asset(eq, 'imageFile') }}" class="img-fluid" alt="{{ eq.name }}">
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		{% for criteriaName, criteriaData in equipmentsByCriteria %}
+			{% for eq in criteriaData.equipments %}
+				<div class="equipment-list-wrapper">
+					<div class="equip-list-content">
+						<div class="equip-list-content-name">{{ eq.name }}</div>
+						<div class="svg-equipment">
+							<img src="{{ vich_uploader_asset(eq, 'imageFile') }}" class="img-fluid" alt="{{ eq.name }}">
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endfor %}
+	{% endif %}
+</div>
