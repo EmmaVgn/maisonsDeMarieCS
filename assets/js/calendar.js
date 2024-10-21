@@ -23,77 +23,85 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('notAvailableDays is not an array:', notAvailableDays);
             notAvailableDays = [];
         }
-
+    
+        // Définit les valeurs par défaut pour les champs de date
         if (!startDateInput.value) {
             startDateInput.value = new Date().toISOString().split('T')[0];
         }
         if (!endDateInput.value) {
             endDateInput.value = new Date().toISOString().split('T')[0];
         }
-
+    
+        // Initialisation de Flatpickr pour le champ de date de début
         flatpickr(startDateInput, {
-                locale: French,
+            locale: "fr", // Utilisez "fr"
             altInput: true,
             altFormat: "j F, Y",
             dateFormat: "d.m.Y",
-            locale: "fr",
             disable: notAvailableDays,
             minDate: "today",
             defaultDate: startDateInput.value,
-            onChange: function (selectedDates, dateStr, instance) {
-                var endDate = new Date(instance.selectedDates[0]);
-                endDate.setDate(endDate.getDate() + 2);
-                endDateInput.flatpickr.set('minDate', endDate);
+            onChange: function () {
                 calculateDuration();
+                updateSubmitButtonState();
             }
         });
-
+    
+        // Initialisation de Flatpickr pour le champ de date de fin
         flatpickr(endDateInput, {
+            locale: "fr", // Utilisez "fr"
             altInput: true,
             altFormat: "j F, Y",
             dateFormat: "d.m.Y",
-            locale: "fr",
             disable: notAvailableDays,
-            minDate: new Date().fp_incr(2), // minimum two nights
+            minDate: "today",
             defaultDate: endDateInput.value,
             onChange: function () {
                 calculateDuration();
+                updateSubmitButtonState();
             }
         });
     }
+    
 
-    function handleFormSubmission() {
-        document.querySelector('form').addEventListener('submit', function (event) {
-            event.preventDefault();
+// Fonction pour gérer la soumission du formulaire
+function handleFormSubmission() {
+    document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var form = event.target;
+        var formData = new FormData(form);
+        var action = form.action;
 
-            var form = event.target;
-            var formData = new FormData(form);
-            var action = form.action;
-
-            fetch(action, {
-                method: form.method,
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.href = data.redirect;
-                } else {
-                    if (data.error) {
-                        showAlert(data.error);
-                    } else if (data.errors) {
-                        data.errors.forEach(error => {
-                            showAlert(error);
-                        });
-                    }
+        fetch(action, {
+            method: form.method,
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                // Gestion des erreurs
+                if (data.error) {
+                    showAlert(data.error);
+                } else if (data.errors) {
+                    data.errors.forEach(error => {
+                        showAlert(error);
+                    });
                 }
-            })
-            .catch(error => {
-                console.error('Form submission error:', error);
-                showAlert('Une erreur s\'est produite lors de la soumission du formulaire. Veuillez réessayer.');
-            });
+            }
+        })
+        .catch(error => {
+            console.error('Form submission error:', error);
+            showAlert('Une erreur s\'est produite lors de la soumission du formulaire. Veuillez réessayer.');
         });
-    }
+    });
+}
 
     function showAlert(message) {
         // Créer un élément div pour afficher le message d'alerte
