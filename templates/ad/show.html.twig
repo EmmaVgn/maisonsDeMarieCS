@@ -6,86 +6,79 @@
 {% endblock %}
 
 {% block body %}
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item">
-			<a href="{{ path('homepage') }}">Accueil</a>
-		</li>
-		<li class="breadcrumb-item active">{{ ad.name }}</li>
-	</ol>
+	<div class="container">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{{ path('homepage') }}">Accueil</a>
+			</li>
+			<li class="breadcrumb-item active">{{ ad.name }}</li>
+		</ol>
 
-	<h1>{{ ad.name }}</h1>
-	<div class="row">
-		<div class="col-lg-12 mb-md-3 mb-sm-3">
-			<div id="carouselAdIndicators" class="carousel slide" data-bs-ride="carousel">
-				<div class="carousel-indicators">
-					{% for key, image in ad.images %}
-						<button type="button" data-bs-target="#carouselAdIndicators" data-bs-slide-to="{{ key }}" {% if loop.first %} class="active" {% endif %}></button>
-					{% endfor %}
-				</div>
-				<div class="carousel-inner">
-					{% for key, image in ad.images %}
-						<div class="carousel-item {% if loop.first %}active{% endif %}">
-							<img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ ad.name }}" class="d-block w-100">
-						</div>
-					{% endfor %}
-				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselAdIndicators" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselAdIndicators" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
-			</div>
+		<h1 class="my-4">{{ ad.name }}</h1>
+		<div class="row">
+			{% include "_partials/_portofolio.html.twig" %}
 		</div>
-	</div>
-	<div class="row d-flex justify-content-between">
-		<div class="col-md-7">
-			<h4>Logement entier : hébergement -
-				{{ ad.city }},
-				{{ ad.country|country_name('fr') }}</h4>
-			<div class="mt-2">
-				<ol class="m-0 p-0 separated-list d-flex">
-					<li class="d-flex align-items-center">{{ ad.capacity }}
-						voyageurs</li>
-					<li class="d-flex align-items-center">{{ ad.rooms }}
-						chambres</li>
-					<li class="d-flex align-items-center">{{ ad.beds }}
-						lits</li>
-				</ol>
-			</div>
 
-			<p>{{ ad.content | raw | nl2br  }}</p>
-		</div>
-		<div class="col-md-4">
-			<div class="card border-dark mb-3" style="padding: 0;">
-				<div class="card-header" id="priceValue">
-					<strong>{{ ad.price | amount }}</strong>
-					par nuit
+		<div class="row d-flex justify-content-between my-4">
+			<div class="col-md-7">
+				<h4>Logement entier : hébergement -
+					{{ ad.city }},
+					{{ ad.country|country_name('fr') }}</h4>
+				<div class="mt-2">
+					<ol class="m-0 p-0 separated-list d-flex">
+						<li class="d-flex align-items-center">{{ ad.capacity }}
+							voyageurs</li>
+						<li class="d-flex align-items-center">{{ ad.rooms }}
+							chambres</li>
+						<li class="d-flex align-items-center">{{ ad.beds }}
+							lits</li>
+					</ol>
 				</div>
-				<div class="card-body">
-					<h4 class="card-title"></h4>
-					<p class="card-text">
-						{{ form_start(form, {'action': path('booking_confirm', {'slug': ad.slug})}) }}
-						{{ form_row(form.startDateAt)}}
-						{{ form_row(form.endDateAt) }}
-						<input type="hidden" name="ad_slug" value="{{ ad.slug }}">
-						<div class="text-center">Aucun montant ne vous sera débité pour le moment</div>
-					</p>
-					<button type="submit" id="submit-btn" class="btn btn-secondary w-100">Je réserve !</button>
-					{{ form_end(form) }}
-					<div class="row mt-3">
-						<div class="d-flex justify-content-between">
-							<div class="text-decoration-underline">{{ ad.price | amount }}
-								x
-								<span id="days">0</span>
-								nuits</div>
-							<div>
-								<span id="amount">...</span>
-								&euro;
+
+				<p class="mt-2">{{ ad.content | raw | nl2br }}</p>
+			</div>
+			<div class="col-md-4">
+				<div class="card border-dark mb-3">
+					<div class="card-header" id="priceValue">
+						<strong>{{ ad.price | amount }}</strong>
+						par nuit
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							{{ form_start(form, {'action': path('booking_confirm', {'slug': ad.slug})}) }}
+							{{ form_row(form.startDateAt) }}
+							{{ form_row(form.endDateAt) }}
+							<input type="hidden" name="ad_slug" value="{{ ad.slug }}">
+							<div class="text-center">Aucun montant ne vous sera débité pour le moment</div>
+						</p>
+						<button type="submit" id="submit-btn" class="btn btn-secondary w-100">Je réserve !</button>
+						{{ form_end(form) }}
+						<div class="row mt-3">
+							<div class="d-flex justify-content-between">
+								<div class="text-decoration-underline">{{ ad.price | amount }}
+									x
+									<span id="days">0</span>
+									nuits</div>
+								<div>
+									<span id="amount">...</span>
+									&euro;
+								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						{% include "_partials/_modal.html.twig" %}
 					</div>
 				</div>
 			</div>

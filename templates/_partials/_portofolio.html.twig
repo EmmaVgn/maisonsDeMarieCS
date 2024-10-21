@@ -1,0 +1,41 @@
+<section class="section site-portfolio">
+	<div class="container">
+		<div id="portfolio-grid" class="flex-container">
+			<div class="large-item">
+				<a href="#" data-bs-toggle="modal" data-bs-target="#portfolioModal" class="item-wrap">
+					{% if not ad.images is empty %}
+						<img src="{{ vich_uploader_asset(ad.images[0], 'imageFile') }}" class="img-fluid" alt="{{ ad.name }}">
+					{% else %}
+						<img src="{{ asset('assets/img/default-img.jpg') }}" class="image-reservation" alt="Default Image">
+					{% endif %}
+				</a>
+			</div>
+			<div class="small-items-first">
+				{% for image in ad.images[1:2] %}
+					<div class="small-item">
+						<a href="#" data-bs-toggle="modal" data-bs-target="#portfolioModal" class="item-wrap">
+							{% if not image is empty %}
+								<img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="img-fluid" alt="{{ ad.name }}">
+							{% else %}
+								<img src="{{ asset('assets/img/default-img.jpg') }}" class="image-reservation" alt="Default Image">
+							{% endif %}
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="small-items-second">
+				{% for k, image in ad.images|filter((image, k) => k > 2 and k < 5) %}
+					<div class="small-item">
+						<a href="#" data-bs-toggle="modal" data-bs-target="#portfolioModal" class="item-wrap">
+							{% if not image is empty %}
+								<img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="img-fluid" alt="{{ ad.name }}">
+							{% else %}
+								<img src="{{ asset('assets/img/default-img.jpg') }}" class="image-reservation" alt="Default Image">
+							{% endif %}
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
