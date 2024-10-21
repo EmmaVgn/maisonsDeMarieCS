@@ -1081,3 +1081,13 @@ gmpx-split-layout input:focus::placeholder {
   align-items: center;
   color: white;
 }
+
+/*--------------------------------------------------------------
+# Ad - calendrier
+--------------------------------------------------------------*/
+.flatpickr-input {
+  border: 1px solid #ccc; /* Ajout d'une bordure */
+  padding: 10px; /* Ajout de rembourrage */
+  width: 100%; /* Largeur 100% */
+  box-sizing: border-box; /* Pour que le padding ne modifie pas la largeur totale */
+}

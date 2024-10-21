@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         flatpickr(startDateInput, {
+                locale: French,
             altInput: true,
             altFormat: "j F, Y",
             dateFormat: "d.m.Y",
