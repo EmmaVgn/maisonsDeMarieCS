@@ -3,6 +3,15 @@
 {% endblock %}
 {% block body %}
 	<div class="ads-container">
-		{% include "ad/display.html.twig" %}
+		<h1>Voici les annonces de nos hôtes !</h1>
+		<div class="row">
+			{% for ad in ads %}
+
+				{% include "ad/_ad.html.twig" with { 'ad': ad } %}
+			{% else %}
+				<p>Aucune annonce disponible.</p>
+
+			{% endfor %}
+		</div>
 	</div>
 {% endblock %}

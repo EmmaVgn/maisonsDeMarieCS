@@ -15,7 +15,6 @@
 					{% else %}
 						<img src="https://placehold.co/600x400/png" class="card-img-top" alt="Image de {{ ad.name }}">
 					{% endif %}
-
 					<div class="card-body text-center">
 						<h4 class="card-title">{{ ad.name }}</h4>
 						<p class="card-text">{{ ad.introduction|slice(0, 150) ~ '...' }}</p>

@@ -25,6 +25,68 @@ h3,
 h4 {
   font-family: "Montserrat", serif;
 }
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f9fa; /* Couleur de fond légère */
+}
+
+.ads-container {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+h1 {
+  text-align: center;
+  color: #333; /* Couleur sombre pour le titre */
+  margin-bottom: 30px;
+}
+
+.card {
+  border-radius: 15px; /* Coins arrondis */
+  overflow: hidden; /* Pour masquer les débordements */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: transform 0.2s; /* Animation au survol */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Zoom léger au survol */
+}
+
+.card-header {
+  background-color: #f1f1f1; /* Couleur de fond du header */
+  padding: 20px;
+  border-bottom: 2px solid #ddd; /* Bordure inférieure */
+}
+
+.card-header strong {
+  color: #555; /* Couleur du texte du header */
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #fff; /* Couleur de fond du corps de la carte */
+}
+
+.card-title {
+  font-size: 1.5rem; /* Taille de police du titre */
+  color: #333; /* Couleur sombre pour le titre */
+  margin-bottom: 10px;
+}
+
+.card-text {
+  color: #777; /* Couleur du texte d'introduction */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Couleur personnalisée pour le bouton */
+  color: #fff; /* Couleur du texte du bouton */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Couleur au survol du bouton */
+}
+
 /*--------------------------------------------------------------
 # Logo
 --------------------------------------------------------------*/
@@ -241,6 +303,13 @@ h3 {
 }
 
 /*--------------------------------------------------------------
+# register
+--------------------------------------------------------------*/
+.register-container {
+  margin-top: 200px;
+}
+
+/*--------------------------------------------------------------
 # Ads
 --------------------------------------------------------------*/
 .separated-list {
@@ -254,11 +323,14 @@ h3 {
 
 .ads-container {
   margin-top: 200px;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-/*--------------------------------------------------------------
-# register
---------------------------------------------------------------*/
-.register-container {
-  margin-top: 200px;
+/* Ajustement pour mobile */
+@media (max-width: 768px) {
+  .col-lg-4 {
+    flex: 0 0 100%; /* 100% sur petits écrans */
+    max-width: 100%;
+  }
 }
