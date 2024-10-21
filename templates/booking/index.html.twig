@@ -1,31 +1,38 @@
 {% extends "base.html.twig" %}
+
 {% block title %}
 	Mes voyages
 {% endblock %}
+
 {% block body %}
 	<h1>Voyages</h1>
+
 	{% if futureBookings is empty and pastBookings is empty %}
 		{% include "partials/_no_booking.html.twig" %}
 	{% endif %}
+
 	{% if futureBookings is not empty or pastBookings is not empty %}
 		{% set displayNoBooking = pastBookings is defined %}
 		{% set hasFutureAndPastBookings = futureBookings is not empty and pastBookings is not empty %}
+
 		{% if hasFutureAndPastBookings %}
 			{% set displayNoBooking = false %}
 		{% endif %}
+
 		{% if futureBookings is not empty %}
 			{% set displayNoBooking = false %}
 			<div class="row">
 				<h2 class="py-4 fs-4">
 					Voyages à venir
 				</h2>
-				<div class="d-flex justify-content-between align-items-center">
+				<div class="d-flex justify-content-between align-items-center flex-wrap">
 					{% for b in futureBookings %}
 						{% include "partials/_list_past_and_future_booking.html.twig" %}
 					{% endfor %}
 				</div>
 			</div>
 		{% endif %}
+
 		{% if pastBookings is not empty %}
 			{% if displayNoBooking %}
 				{% include "partials/_no_booking.html.twig" %}
@@ -34,12 +41,13 @@
 				<h2 class="py-4 fs-4">
 					Voyages passés
 				</h2>
-				<div class="d-flex justify-content-between align-items-center">
+				<div class="d-flex justify-content-between align-items-center flex-wrap">
 					{% for b in pastBookings %}
 						{% include "partials/_list_past_and_future_booking.html.twig" %}
 					{% endfor %}
 				</div>
 			</div>
 		{% endif %}
+
 	{% endif %}
 {% endblock %}

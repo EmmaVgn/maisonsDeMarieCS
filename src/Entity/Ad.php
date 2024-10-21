@@ -91,6 +91,24 @@ class Ad
         return $notAvailableDays;
     }
 
+     /**
+     * Vérifie si les dates de réservation sont continues par rapport aux dates existantes
+     *
+     * @param \DateTimeImmutable $startDateAt
+     * @param \DateTimeImmutable $endDateAt
+     * @return boolean
+     */
+    public function areDatesContinuous(\DateTimeImmutable $startDateAt, \DateTimeImmutable $endDateAt): bool
+    {
+        $notAvailableDays = $this->getNotAvailableDays();
+        foreach ($notAvailableDays as $day) {
+            if ($day < $endDateAt && $day > $startDateAt) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

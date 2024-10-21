@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Serializable;
 use Imagine\Gd\Imagine;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AvatarRepository;
@@ -12,10 +11,11 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: AvatarRepository::class)]
 #[HasLifecycleCallbacks]
 #[Vich\Uploadable]
-class Avatar implements Serializable
+class Avatar
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -40,7 +40,6 @@ class Avatar implements Serializable
         ],
         mimeTypesMessage: 'Le type MIME du fichier n\'est pas valide ({{ type }}). Les formats autorisés sont {{ types }}'
     )]
-
     #[Vich\UploadableField(mapping: 'avatars_images', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
@@ -52,6 +51,11 @@ class Avatar implements Serializable
 
     #[ORM\OneToOne(inversedBy: 'avatar', cascade: ['persist', 'remove'])]
     private ?User $user = null;
+
+    public function __toString()
+    {
+        return $this->imageName;
+    }
 
     public function getId(): ?int
     {
@@ -70,7 +74,7 @@ class Avatar implements Serializable
         return $this;
     }
 
-        /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -82,6 +86,7 @@ class Avatar implements Serializable
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
+
         if (null !== $imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
@@ -103,7 +108,7 @@ class Avatar implements Serializable
     {
         return $this->imageName;
     }
-    
+
     #[PostPersist]
     #[PostUpdate]
     public function resize()
@@ -111,25 +116,36 @@ class Avatar implements Serializable
         if (null === $this->imageFile) {
             return;
         }
+
         // create smaller image
         $width = 100;
+        $height = 100;
         $imagine = new Imagine;
         $image = $imagine->open($this->imageFile);
         $size = $image->getSize();
-        $image->resize($size->widen($width));
+        $image->resize($size->widen($width))
+            ->resize($size->heighten($height));
         $realpath = $this->imageFile->getRealPath();
         $image->save($realpath);
     }
 
-    // Afin d'éviter une erreur 500 suite serialisation
-    public function serialize()
+    // Méthodes de sérialisation pour PHP 7.4+ et compatibilité avec PHP 8
+    public function __serialize(): array
     {
-        $this->imageFile = $this->imageFile;
+        return [
+            'id' => $this->id,
+            'imageName' => $this->imageName,
+            'updatedAt' => $this->updatedAt,
+            'user' => $this->user
+        ];
     }
 
-    public function unserialize($serialized)
+    public function __unserialize(array $data): void
     {
-        $this->imageFile = $this->imageFile;
+        $this->id = $data['id'];
+        $this->imageName = $data['imageName'];
+        $this->updatedAt = $data['updatedAt'];
+        $this->user = $data['user'];
     }
 
     public function getUser(): ?User

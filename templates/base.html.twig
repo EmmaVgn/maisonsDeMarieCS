@@ -20,8 +20,11 @@
 
 		{% block javascripts %}
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-			<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
-			<script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js" defer></script>
+			<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+			<!-- Ajoutez cette ligne -->
+			<script src="{{ asset('assets/js/main.js') }}" defer></script>
+			<!-- Mettez à jour la ligne pour inclure main.js -->
+
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
