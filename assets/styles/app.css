@@ -238,6 +238,12 @@ h3 {
   color: #007bff; /* Changer la couleur au survol */
 }
 
+#footer {
+  width: 100%;
+  margin: 0; /* S'assure qu'il n'y a pas de marge */
+  padding: 0; /* S'assure qu'il n'y a pas de padding supplémentaire */
+}
+
 /*--------------------------------------------------------------
 # Login
 --------------------------------------------------------------*/
