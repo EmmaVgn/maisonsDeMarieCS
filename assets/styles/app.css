@@ -193,6 +193,7 @@ h1 {
 .custom-title {
   color: #f8f9fa; /* Modifiez cette couleur selon votre choix */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ajoute une ombre portée pour plus de visibilité */
+  font-size: 4rem;
 }
 
 /*--------------------------------------------------------------
@@ -1200,7 +1201,6 @@ h5 {
 /* Style pour le total */
 .fw-bold {
   color: #000; /* Couleur pour le total */
-  font-size: 1.2em; /* Taille de police augmentée pour le total */
 }
 
 /* Ajout de marges */
