@@ -33,6 +33,7 @@
 	<body>
 
 		{% include "shared/_navbar.html.twig" %}
+
 		{% if app.request.attributes.get('_route') == 'homepage' %}
 			<div class="jumbotron bg-primary text-white rounded-0" style="height: 100vh; display: flex; align-items: center;">
 				<div class="container text-center">
@@ -42,10 +43,11 @@
 				</div>
 			</div>
 		{% endif %}
-		{% block body %}
 
+		{% block body %}
 			{% block content %}{% endblock %}
 		{% endblock %}
+
 		{% include "shared/_footer.html.twig" %}
 	</body>
 </html>

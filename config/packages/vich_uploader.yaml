@@ -17,3 +17,9 @@ vich_uploader:
       namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
       delete_on_update: true
       delete_on_remove: true
+    icones_images:
+      uri_prefix: /images/icones
+      upload_destination: "%kernel.project_dir%/public/images/icones"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+      delete_on_update: true
+      delete_on_remove: true

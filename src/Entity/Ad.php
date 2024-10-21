@@ -61,12 +61,19 @@ class Ad
     #[ORM\Column(length: 255)]
     private ?string $country = null;
 
+    /**
+     * @var Collection<int, Equipment>
+     */
+    #[ORM\ManyToMany(targetEntity: Equipment::class, mappedBy: 'ads')]
+    private Collection $equipment;
+
     public function __construct()
     {
         // Set default values
         $this->createdAt = new \DateTimeImmutable();
         $this->images = new ArrayCollection();
         $this->bookings = new ArrayCollection();
+        $this->equipment = new ArrayCollection();
     }
     /**
      * Permet d'obtenir un tableau des jours qui ne sont pas disponibles pour cette annonce
@@ -287,6 +294,31 @@ class Ad
     public function setCountry(string $country): static
     {
         $this->country = $country;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipment>
+     */
+    public function getEquipment(): Collection
+    {
+        return $this->equipment;
+    }
+
+    public function addEquipment(Equipment $equipment): static
+    {
+        if (!$this->equipment->contains($equipment)) {
+            $this->equipment->add($equipment);
+            $equipment->addAd($this);
+        }
+        return $this;
+    }
+
+    public function removeEquipment(Equipment $equipment): static
+    {
+        if ($this->equipment->removeElement($equipment)) {
+            $equipment->removeAd($this);
+        }
         return $this;
     }
 }
