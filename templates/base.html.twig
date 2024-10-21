@@ -39,12 +39,17 @@
 
 		{% if app.request.attributes.get('_route') == 'homepage' %}
 
-			<div class="jumbotron" style="height: 100vh; background-image: url('{{ asset('/assets/images/vue ciel.png') }}'); background-size: cover; background-position: center; display: flex; align-items: center; color: white;">
-				<div class="container text-center" style="background-color: rgba(0, 0, 0, 0.5); padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
-					<h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Les Maisons de Marie</h1>
+			<div
+				class="jumbotron" style="height: 100vh; position: relative; overflow: hidden;">
+				<!-- Div pour l'effet de flou -->
+				<div class="blur-background" style="background-image: url('{{ asset('/assets/images/castille.jpg') }}');"></div>
+
+				<div class="container text-center" style="position: relative; z-index: 1; background-color: rgba(0, 0, 0, 0.5); padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); margin-top: 200px;">
+					<h1 class="display-4 fw-bold custom-title animate__animated animate__fadeInDown">Les Maisons de Marie</h1>
 					<p class="lead animate__animated animate__fadeInUp">Découvrez nos superbes gîtes et profitez d'une expérience inoubliable.</p>
 					<a href="{{ path('ads_index') }}" class="btn btn-light btn-lg animate__animated animate__bounce">Réserver maintenant</a>
 				</div>
+
 			</div>
 
 
