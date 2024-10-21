@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous Contacter
+{% endblock %}
+
+{% block body %}
+	<div class="contact-container">
+		<div class="contact py-5">
+			<div class="container text-center">
+				<h1 class="mb-4">Nous Contacter</h1>
+				<p class="lead mb-4">Si vous avez des questions ou des demandes, n'hésitez pas à nous contacter. Nous sommes là pour vous aider!</p>
+
+				{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+				{{ form_errors(form) }}
+
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						{{ form_row(form.firstname, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+					</div>
+					<div class="col-md-6 mb-3">
+						{{ form_row(form.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+					</div>
+					<div class="col-md-6 mb-3">
+						{{ form_row(form.phone, {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
+					</div>
+					<div class="col-md-6 mb-3">
+						{{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+					</div>
+					<div class="col-12 mb-3">
+						{{ form_row(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Votre message', 'rows': 4}}) }}
+					</div>
+				</div>
+				<button class="btn btn-secondary mt-3 mb-4" type="submit">
+					<span>Nous Contacter</span>
+				</button>
+				{{ form_end(form) }}
+
+				<h2 class="mt-5 mb-4">Notre Emplacement</h2>
+				<div class="col mb-4">
+					<iframe src="https://storage.googleapis.com/maps-solutions-kzr224w2qv/neighborhood-discovery/8rpk/neighborhood-discovery.html" width="100%" height="520px" style="border:0;" loading="lazy"></iframe>
+				</div>
+
+				<div class="row my-5">
+					<div class="col-md-4">
+						<h3>Nos Coordonnées</h3>
+						<p>
+							<strong>Téléphone :</strong>
+							+33 6 12 34 56 78</p>
+						<p>
+							<strong>Email :</strong>
+							contact@lesmaisonsdemarie.fr</p>
+						<p>
+							<strong>Adresse :</strong>
+							123 Rue des Maisons, 24560 Castillonnes, France</p>
+					</div>
+					<div class="col-md-4">
+						<h3>Heures d'Ouverture</h3>
+						<p>
+							<strong>Lundi - Vendredi :</strong>
+							9h00 - 18h00</p>
+						<p>
+							<strong>Samedi :</strong>
+							10h00 - 14h00</p>
+						<p>
+							<strong>Dimanche :</strong>
+							Fermé</p>
+					</div>
+					<div class="col-md-4">
+						<h3>Suivez-nous</h3>
+						<p>Restez connecté avec nous sur les réseaux sociaux :</p>
+						<a href="#" class="btn btn-primary mb-2">Facebook</a>
+						<a href="#" class="btn btn-info mb-2">Instagram</a>
+						<a href="#" class="btn btn-danger">Twitter</a>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

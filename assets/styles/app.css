@@ -149,6 +149,7 @@ h1 {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
   background-color: rgba(0, 0, 0, 0.5); /* Arrière-plan sombre */
   padding: 60px 0; /* Ajustement pour ne pas chevaucher la navbar */
+  margin-top: 56px;
   /* Espace pour la navbar */
 }
 
@@ -603,4 +604,438 @@ h3 {
 .separator-equipment {
   height: 1px;
   background-color: rgb(221, 221, 221);
+}
+
+/*--------------------------------------------------------------
+# Page Ad - Location
+--------------------------------------------------------------*/
+.location-ad-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.location-ad-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.location-ad-wrapper-border {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgb(221, 221, 221);
+}
+.location-ad-content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.location-ad-title-content {
+  padding-bottom: 24px;
+  --spacingBottom: 3;
+}
+.location-ad-title {
+  font-weight: 600;
+  line-height: 1.625rem;
+  font-size: 1.375rem;
+  color: #222222;
+  letter-spacing: -0.01375rem;
+}
+.ad-map-content {
+  border-radius: 12px 12px 0px 0px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0px, 0px, 0px);
+  position: relative;
+  height: 218px;
+}
+@media (min-width: 744px) {
+  .ad-map-content {
+    border-radius: 8px;
+    height: 480px;
+    margin-bottom: 32px;
+  }
+}
+.location-map-container {
+  position: relative;
+  height: 65vh;
+  top: 0px;
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-bottom: 0px;
+  flex: 1;
+}
+@media (min-width: 744px) {
+  .location-map-container {
+    margin-left: inherit;
+    margin-right: inherit;
+    margin-bottom: inherit;
+    height: auto;
+  }
+}
+.location-map-wrapper {
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: #ffffff;
+  min-height: 500px;
+  overflow: hidden;
+  border-radius: 0px;
+  position: static;
+  height: 100%;
+}
+@media (min-width: 744px) {
+  .location-map-wrapper {
+    border-radius: 0px;
+    height: 100%;
+  }
+}
+.location-map-content {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+@media (min-width: 744px) {
+  .location-map-content {
+    top: 0px;
+    position: relative;
+    height: 100%;
+    padding-bottom: 24px;
+    padding-top: 0px;
+    border-radius: 0px;
+  }
+}
+.resume-adress {
+  font-size: 1em;
+  color: rgb(34, 34, 34);
+  font-weight: 600;
+  line-height: 20px;
+}
+.sb-title {
+  position: relative;
+  top: 0px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+}
+.sb-title-icon {
+  position: relative;
+  top: 0px;
+}
+gmpx-split-layout {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 744px) {
+  gmpx-split-layout {
+    width: 600px;
+    height: 500px;
+  }
+}
+gmpx-split-layout:not(:defined) {
+  visibility: hidden;
+}
+.panel {
+  background: white;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#additional-fields {
+  background: white;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 2rem;
+}
+.half-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+.half-input {
+  max-width: 120px;
+}
+h2 {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+gmpx-split-layout input {
+  height: 30px;
+}
+#location-input:focus-visible {
+  box-shadow: inset 0 0 0 1px;
+  border-bottom: 0;
+}
+gmpx-split-layout input {
+  border: 0;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  padding: 5px;
+}
+gmpx-split-layout input:focus::placeholder {
+  color: white;
+}
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact-container {
+  margin-top: 200px;
+}
+
+/*--------------------------------------------------------------
+# Contact-rapide
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Contact Section Styling
+--------------------------------------------------------------*/
+
+.contact-section {
+  background-color: #f8f9fa; /* Couleur de fond claire */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 40px; /* Espacement intérieur */
+  max-width: 600px;
+  margin: 0 auto; /* Centrer la section */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: all 0.3s ease; /* Transition fluide */
+}
+
+.contact-section:hover {
+  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2); /* Effet hover */
+}
+
+.contact-section h2 {
+  font-family: "Poppins", sans-serif; /* Police élégante */
+  font-size: 2.5rem; /* Taille du titre */
+  font-weight: 700;
+  margin-bottom: 30px; /* Espace en dessous du titre */
+  color: #343a40; /* Couleur sombre élégante */
+}
+
+.contact-section p {
+  font-size: 1.2rem; /* Taille du texte de description */
+  line-height: 1.8; /* Interligne */
+  margin-bottom: 30px; /* Espace en dessous du texte */
+  color: #6c757d; /* Couleur de texte adoucie */
+}
+
+.contact-section a.btn {
+  font-size: 1.2rem; /* Taille du texte du bouton */
+  font-weight: 600; /* Texte en gras */
+  background-color: #343a40; /* Couleur du bouton */
+  color: #fff; /* Couleur du texte */
+  border-radius: 5px; /* Coins arrondis du bouton */
+  padding: 15px 30px; /* Espacement interne du bouton */
+  text-transform: uppercase; /* Texte en majuscules */
+  transition: all 0.3s ease; /* Transition fluide */
+}
+
+.contact-section a.btn:hover {
+  background-color: #495057; /* Changement de couleur au hover */
+  transform: translateY(-3px); /* Léger déplacement vers le haut au hover */
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 30px;
+    width: 90%; /* Ajustement pour mobile */
+  }
+
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+
+  .contact-section a.btn {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Offers Section Styling
+--------------------------------------------------------------*/
+
+.offers-section {
+  background-color: #f8f9fa; /* Fond clair */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 40px; /* Espacement intérieur */
+  max-width: 700px;
+  margin: 0 auto; /* Centrer la section */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: all 0.3s ease; /* Transition fluide */
+}
+
+.offers-section:hover {
+  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2); /* Effet hover */
+}
+
+.offers-section h2 {
+  font-family: "Poppins", sans-serif; /* Police moderne */
+  font-size: 2.5rem; /* Taille du titre */
+  font-weight: 700;
+  margin-bottom: 30px; /* Espace en dessous du titre */
+  color: #343a40; /* Couleur sombre élégante */
+}
+
+.offers-section p {
+  font-size: 1.2rem; /* Taille du texte */
+  line-height: 1.8; /* Interligne */
+  margin-bottom: 20px; /* Espace en dessous du texte */
+  color: #6c757d; /* Couleur de texte adoucie */
+}
+
+.offers-section p span {
+  font-weight: 600; /* Accentuer la réduction */
+  color: #dc3545; /* Couleur rouge pour la promotion */
+}
+
+.offers-section a.btn {
+  font-size: 1.2rem; /* Taille du texte du bouton */
+  font-weight: 600; /* Texte en gras */
+  background-color: #343a40; /* Couleur du bouton */
+  color: #fff; /* Couleur du texte */
+  border-radius: 5px; /* Coins arrondis du bouton */
+  padding: 15px 30px; /* Espacement interne du bouton */
+  text-transform: uppercase; /* Texte en majuscules */
+  transition: all 0.3s ease; /* Transition fluide */
+}
+
+.offers-section a.btn:hover {
+  background-color: #495057; /* Changement de couleur au hover */
+  transform: translateY(-3px); /* Déplacement léger au hover */
+}
+
+@media (max-width: 768px) {
+  .offers-section {
+    padding: 30px;
+    width: 90%; /* Ajustement pour mobile */
+  }
+
+  .offers-section h2 {
+    font-size: 2rem;
+  }
+
+  .offers-section a.btn {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Activities Section Styling
+--------------------------------------------------------------*/
+
+.activities-section {
+  background-color: #f8f9fa; /* Fond clair */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 40px; /* Espacement intérieur */
+  max-width: 800px;
+  margin: 0 auto; /* Centrer la section */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: all 0.3s ease; /* Transition fluide */
+}
+
+.activities-section:hover {
+  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2); /* Effet hover */
+}
+
+.activities-section h2 {
+  font-family: "Poppins", sans-serif; /* Police moderne */
+  font-size: 2.5rem; /* Taille du titre */
+  font-weight: 700;
+  margin-bottom: 30px; /* Espace sous le titre */
+  color: #343a40; /* Couleur du texte */
+}
+
+.activities-section ul {
+  font-size: 1.2rem; /* Taille du texte */
+  line-height: 1.8; /* Interligne */
+  color: #6c757d; /* Couleur douce */
+  padding-left: 20px; /* Indentation des items */
+}
+
+.activities-section li {
+  margin-bottom: 15px; /* Espacement entre les éléments de la liste */
+  position: relative;
+  padding-left: 25px; /* Indentation pour les icônes */
+}
+
+.activities-section li::before {
+  content: "•"; /* Utilisation de puces personnalisées */
+  font-size: 1.5rem; /* Taille des puces */
+  color: #28a745; /* Couleur verte */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .activities-section {
+    padding: 30px;
+    width: 90%; /* Ajustement pour mobile */
+  }
+
+  .activities-section h2 {
+    font-size: 2rem;
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections - Animations et transitions
+--------------------------------------------------------------*/
+
+/* Animation fade-in pour rendre chaque section plus dynamique */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Définir la clé de l'animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Effets de survol pour les encadrés */
+.section-box {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Parallaxe pour les images de fond */
+.parallax-section {
+  background: url("/path/to/your/image.jpg") center center / cover fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }

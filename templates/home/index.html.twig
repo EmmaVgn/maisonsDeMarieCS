@@ -5,7 +5,20 @@
 
 {% block body %}
 
+	<div class="container my-5 fade-in" data-delay="0.2s">
+		{% include "_partials/_services.html.twig" %}
+	</div>
 
-	{% include "home/bienvenu.html.twig" %}
-	{% include "_partials/_services.html.twig" %}
+	<div class="container my-5 fade-in" data-delay="0.4s">
+		{% include "_partials/_activities.html.twig" %}
+	</div>
+
+	<div class="container my-5 fade-in" data-delay="0.6s">
+		{% include "_partials/_special_offers.html.twig" %}
+	</div>
+
+	<div class="container my-5 fade-in" data-delay="0.8s">
+		{% include "_partials/_contact_rapide.html.twig" %}
+	</div>
+
 {% endblock %}

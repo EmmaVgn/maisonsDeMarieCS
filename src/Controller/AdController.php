@@ -45,7 +45,8 @@ class AdController extends AbstractController
             'form' => $form->createView(),
             'notAvailableDays' => $notAvailableDays,
             'equipmentsByCriteria' => $equipmentsByCriteria,
-            'equipmentsAllByCriteria' => $equipmentsAllByCriteria
+            'equipmentsAllByCriteria' => $equipmentsAllByCriteria,
+            'google_api_key' => 'AIzaSyCY6zB0itdFxJlLSpzgipkKTS1EdyHnCSk',
         ]);
     }
 
