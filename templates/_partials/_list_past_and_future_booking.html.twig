@@ -1,0 +1,29 @@
+{% set firstImage = b.ad.images.first() %}
+<div class="col-lg-4 col-md-4">
+	<div class="card-wrapper">
+		<a href="{{ path('booking_show', { 'id': b.id }) }}" class="card-link text-decoration-none">
+			<div class="card mb-3 border border-0" style="max-width: 22rem;padding: 0;">
+				<div class="row g-0">
+					<div class="col-md-4">
+						{% if not firstImage is empty %}
+							<img src="{{ vich_uploader_asset(firstImage, 'imageFile') }}" class="image-reservation" alt="{{ b.ad.name }}">
+						{% else %}
+							<img src="{{ asset('assets/img/default-img.jpg') }}" class="image-reservation" alt="Default Image">
+						{% endif %}
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title fs-6 text fw-bold">{{ b.ad.city }}</h5>
+							<p class="card-text guest-reservation">Hôte : ...</p>
+							<p class="card-text date-reservation">
+								{{ b.startDateAt|format_datetime('long', 'none', locale='fr') }}
+								-
+								{{ b.endDateAt|format_datetime('long', 'none', locale='fr') }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>

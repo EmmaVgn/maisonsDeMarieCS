@@ -37,20 +37,65 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-8">
-			<h4>Logement entier : hébergement -</h4>
+	<div class="row d-flex justify-content-between">
+		<div class="col-md-7">
+			<h4>Logement entier : hébergement -
+				{{ ad.city }},
+				{{ ad.country }}</h4>
 			<div class="mt-2">
 				<ol class="m-0 p-0 separated-list d-flex">
 					<li class="d-flex align-items-center">{{ ad.capacity }}
 						voyageurs</li>
 					<li class="d-flex align-items-center">{{ ad.rooms }}
 						chambres</li>
+					<li class="d-flex align-items-center">{{ ad.beds }}
+						lits</li>
 				</ol>
 			</div>
 			<hr>
 			<hr>
 			<p>{{ ad.content | raw | nl2br  }}</p>
 		</div>
+		<div class="col-md-4">
+			<div class="card border-dark mb-3" style="padding: 0;">
+				<div class="card-header" id="priceValue">
+					<strong>{{ ad.price | amount }}</strong>
+					par nuit
+				</div>
+				<div class="card-body">
+					<h4 class="card-title"></h4>
+					<p class="card-text">
+						{{ form_start(form, {'action': path('booking_confirm', {'slug': ad.slug})}) }}
+						{{ form_row(form.startDateAt)}}
+						{{ form_row(form.endDateAt) }}
+						<div class="text-center">Aucun montant ne vous sera débité pour le moment</div>
+					</p>
+					<button type="submit" class="btn btn-secondary w-100">Je réserve !</button>
+					{{ form_end(form) }}
+					<div class="row mt-3">
+						<div class="d-flex justify-content-between">
+							<div class="text-decoration-underline">{{ ad.price | amount }}
+								x
+								<span id="days">0</span>
+								nuits</div>
+							<div>
+								<span id="amount">...</span>
+								&euro;
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/flatpickr.min.js') }}"></script>
+	<script>
+		// Transférer les dates non disponibles à JavaScript
+var notAvailableDays = [{% for day in notAvailableDays %}
+"{{ day|date('d.m.Y') }}",{% endfor %}];
+	</script>
+	<script src="{{ asset('assets/js/main.js') }}" defer></script>
 {% endblock %}

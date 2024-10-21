@@ -1,0 +1,27 @@
+<h1>Bravo pour votre réservation n°{{ booking.id }}</h1>
+<p>Merci à vous
+	{{ user.firstname }}
+	{{ user.lastname }}
+	!</p>
+<table>
+	<thead>
+		<th>Voyage</th>
+		<th>Date de d'arrivée</th>
+		<th>Date de départ</th>
+		<th>Lieu</th>
+	</thead>
+	<tbody>
+		<td>{{ booking.ad.name }}</td>
+		<td>{{ booking.startDateAt|format_datetime('long', 'none', locale='fr') }}</td>
+		<td>{{ booking.endDateAt|format_datetime('long', 'none', locale='fr') }}</td>
+		<td>{{ booking.ad.city }},
+			{{ booking.ad.country }}</td>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">Total :</td>
+			<td>{{ booking.amount / 100 }}
+				€</td>
+		</tr>
+	</tfoot>
+</table>

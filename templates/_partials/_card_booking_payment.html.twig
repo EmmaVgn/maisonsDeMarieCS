@@ -1,0 +1,43 @@
+{% set firstImage = booking.ad.images.first() %}
+<div class="card mb-3 border w-100 p-4">
+	<div class="row g-0">
+		<div class="col-md-3">
+			{% if not firstImage is empty %}
+				<img src="{{ vich_uploader_asset(firstImage, 'imageFile') }}" class="image-reservation" alt="{{ booking.ad.name }}">
+			{% else %}
+				<img src="{{ asset('assets/img/default-img.jpg') }}" class="image-reservation" alt="Default Image">
+			{% endif %}
+		</div>
+		<div class="col-md-9">
+			<div class="card-body">
+				<h5 class="card-title fs-6 text fw-bold">{{ booking.ad.name }}</h5>
+				<p class="card-text guest-reservation">Logement entier : hébergement</p>
+				<p class="card-text guest-reservation">... (12 commentaires)</p>
+			</div>
+		</div>
+	</div>
+	<div class="row g-0 mt-3">
+		<hr>
+		<div class="d-flex flex-column">
+			<h5 class="fs-5 fw-bold">Détail du prix</h5>
+			<div class="d-flex justify-content-between">
+				<p>
+					{{ booking.ad.price|amount}}
+					x
+					{{ booking.duration }}
+					nuit(s)
+				</p>
+				<p>{{ booking.amount|amount }}</p>
+			</div>
+		</div>
+	</div>
+	<div class="row g-0 mt-3">
+		<hr>
+		<div class="d-flex justify-content-between">
+			<p class="fw-bold">
+				TOTAL (EUR)
+			</p>
+			<p class="fw-bold">{{ booking.amount|amount }}</p>
+		</div>
+	</div>
+</div>

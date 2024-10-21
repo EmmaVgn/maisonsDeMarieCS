@@ -46,11 +46,49 @@ class Ad
     #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'ad', orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
+    /**
+     * @var Collection<int, Booking>
+     */
+    #[ORM\OneToMany(targetEntity: Booking::class, mappedBy: 'ad')]
+    private Collection $bookings;
+
+    #[ORM\Column]
+    private ?int $beds = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $country = null;
+
     public function __construct()
     {
         // Set default values
         $this->createdAt = new \DateTimeImmutable();
         $this->images = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
+    }
+    /**
+     * Permet d'obtenir un tableau des jours qui ne sont pas disponibles pour cette annonce
+     *
+     * @return array Un tableau d'objets DateTimeImmutable représentant les jours d'occupation
+     */
+    public function getNotAvailableDays()
+    {
+        $notAvailableDays = [];
+        foreach ($this->bookings as $booking) {
+            // Calculer les jours qui se trouvent entre la date d'arrivée et de départ
+            $resultat = range(
+                $booking->getStartDateAt()->getTimestamp(),
+                $booking->getEndDateAt()->getTimestamp(),
+                24 * 60 * 60
+            );
+            $days = array_map(function($dayTimestamp) {
+                return new \DateTimeImmutable(date('Y-m-d', $dayTimestamp));
+            }, $resultat);
+            $notAvailableDays = array_merge($notAvailableDays, $days);
+        }
+        return $notAvailableDays;
     }
 
     public function getId(): ?int
@@ -171,6 +209,66 @@ class Ad
                 $image->setAd(null);
             }
         }
+        return $this;
+    }
+
+        /**
+     * @return Collection<int, Booking>
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+    public function addBooking(Booking $booking): static
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->setAd($this);
+        }
+        return $this;
+    }
+    public function removeBooking(Booking $booking): static
+    {
+        if ($this->bookings->removeElement($booking)) {
+            // set the owning side to null (unless already changed)
+            if ($booking->getAd() === $this) {
+                $booking->setAd(null);
+            }
+        }
+        return $this;
+    }
+    
+    public function getBeds(): ?int
+    {
+        return $this->beds;
+    }
+
+    public function setBeds(int $beds): static
+    {
+        $this->beds = $beds;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): static
+    {
+        $this->country = $country;
         return $this;
     }
 }

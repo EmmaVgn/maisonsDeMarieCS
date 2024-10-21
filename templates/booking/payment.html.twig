@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	Demande de réservation
+{% endblock %}
+{% block body %}
+	<div class="row">
+		<h1>Confirmer et payer</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Votre voyage</h4>
+			<div class="d-flex flex-column pb-3">
+				<h5 class="fs-5 fw-bold">Dates</h5>
+				<p>Du
+					{{ booking.startDateAt|format_datetime('long', 'none', locale='fr') }}
+					au
+					{{ booking.endDateAt|format_datetime('long', 'none', locale='fr') }}</p>
+			</div>
+			<hr>
+			<div class="pt-3 pb-3">
+				<div class="flex">
+					<h5 class="fs-5 fw-bold pb-3">Payer avec</h5>
+					<form id="payment-form">
+						<div
+							id="payment-element"><!--Stripe.js injects the Payment Element-->
+						</div>
+						<button id="submit">
+							<div class="spinner hidden" id="spinner"></div>
+							<span id="button-text">Payer avec Stripe</span>
+						</button>
+						<div id="payment-message" class="hidden"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			{% include "partials/_card_booking_payment.html.twig" %}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://js.stripe.com/v3/"></script>
+	<script>
+		const clientSecret = '{{ clientSecret }}';
+const stripePublicKey = '{{ stripePublicKey }}';
+const redirectAfterSuccessUrl = '{{ url('booking_payment_success', {'id': booking.id}) }}';
+	</script>
+	<script src="{{ asset('assets/js/payment.js') }}" defer></script>
+{% endblock %}

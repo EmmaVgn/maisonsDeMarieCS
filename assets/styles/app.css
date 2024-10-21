@@ -327,6 +327,26 @@ h3 {
   background-color: #f9f9f9;
 }
 
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc; /* Couleur de bordure */
+  transition: transform 0.2s; /* Animation de survol */
+}
+
+.card:hover {
+  transform: scale(1.02); /* Légère augmentation au survol */
+}
+
+.card-title {
+  font-size: 1.25rem; /* Taille du titre */
+  font-weight: bold; /* Gras */
+}
+
+.card-text {
+  color: #555; /* Couleur du texte */
+  line-height: 1.5; /* Espacement des lignes */
+}
+
 /* Ajustement pour mobile */
 @media (max-width: 768px) {
   .col-lg-4 {

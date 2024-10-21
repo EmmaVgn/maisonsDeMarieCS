@@ -1,21 +1,21 @@
-<div class="col-lg-4 col-md-6 mb-4">
-	<div class="card border-light shadow-lg">
-		<div class="card-header text-center text-white">
-			<strong>{{ ad.rooms }}
-				chambres</strong><br>
-			<strong>{{ ad.price }}€ / nuit</strong><br>
-			<small class="text-warning">Pas encore noté</small>
+<div class="col-lg-4 col-md-4">
+	<div class="card border-dark mb-3" style="max-width: 20rem;padding: 0;">
+		<div class="card-header">{{ ad.rooms }}
+			chambres,
+			<strong>{{ ad.price | amount }}
+				/ nuit</strong>
+			<br>
+			<small>Pas encore noté</small>
 		</div>
-		{% if ad.images|length > 0 %}
-			<img src="{{ vich_uploader_asset(ad.images[0], 'imageFile') }}" class="card-img-top" alt="Image de {{ ad.name }}">
+		{% if not ad.images is empty %}
+			<img src="{{ vich_uploader_asset(ad.images.first, 'imageFile') }}" alt="{{ ad.name }}" class="img-fluid">
 		{% else %}
-			<img src="https://placehold.co/600x400/png" class="card-img-top" alt="Image de {{ ad.name }}">
+			<img src="{{ asset('assets/img/default-img.jpg') }}" class="img-fluid" alt="Default Image">
 		{% endif %}
-
-		<div class="card-body text-center">
+		<div class="card-body">
 			<h4 class="card-title">{{ ad.name }}</h4>
-			<p class="card-text">{{ ad.introduction|slice(0, 150) ~ '...' }}</p>
-			<a href="{{ path('ads_show', { 'slug': ad.slug }) }}" class="btn btn-primary">En savoir plus</a>
+			<p class="card-text">{{ ad.content|raw|nl2br|striptags|u.truncate(100, '...') }}</p>
+			<a href="{{ path('ads_show', {'slug': ad.slug}) }}" class="btn btn-secondary">En savoir plus</a>
 		</div>
 	</div>
 </div>
