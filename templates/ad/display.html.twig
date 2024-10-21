@@ -1,0 +1,28 @@
+<div class="container my-5">
+	<h2 class="text-center mb-4">Mes maisons</h2>
+	<div class="row">
+		{% for ad in ads %}
+			<div class="col-lg-4 col-md-4 mb-4">
+				<div class="card border-dark shadow-sm">
+					<div class="card-header text-center">
+						<strong>{{ ad.rooms }}
+							chambres</strong><br>
+						<strong>{{ ad.price }}€ / nuit</strong><br>
+						<small>Pas encore noté</small>
+					</div>
+					{% if ad.images|length > 0 %}
+						<img src="{{ vich_uploader_asset(ad.images[0], 'imageFile') }}" class="card-img-top" alt="Image de {{ ad.name }}">
+					{% else %}
+						<img src="https://placehold.co/600x400/png" class="card-img-top" alt="Image de {{ ad.name }}">
+					{% endif %}
+
+					<div class="card-body text-center">
+						<h4 class="card-title">{{ ad.name }}</h4>
+						<p class="card-text">{{ ad.introduction|slice(0, 150) ~ '...' }}</p>
+						<a href="{{ path('ads_show', { 'slug': ad.slug }) }}" class="btn btn-secondary">En savoir plus</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
