@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions Légales
+{% endblock %}
+
+{% block body %}
+	<div class="legalies-container">
+		<h2>Sommaire</h2>
+		<ul class="sommaire-list">
+			<li>
+				<a href="#mentions-legales">Mentions légales</a>
+			</li>
+			<li>
+				<a href="#cgv">Conditions Générales de Vente (CGV)</a>
+			</li>
+			<li>
+				<a href="#confidentialite">Politique de Confidentialité et RGPD</a>
+			</li>
+			<li>
+				<a href="#cookies">Politique des cookies</a>
+			</li>
+			<li>
+				<a href="#annulation">Politique d'Annulation</a>
+			</li>
+		</ul>
+
+		<section id="mentions-legales" class="policy-section">
+			{% include "_partials/_mentions_legales.html.twig" %}
+		</section>
+
+		<section id="cgv" class="policy-section">
+			{% include "_partials/_cgv.html.twig" %}
+		</section>
+
+		<section id="confidentialite" class="policy-section">
+			{% include "_partials/_politique_confidentialite.html.twig" %}
+		</section>
+
+		<section id="cookies" class="policy-section">
+			{% include "_partials/_politique_cookies.html.twig" %}
+		</section>
+
+		<section id="annulation" class="policy-section">
+			{% include "_partials/_politique_annulation.html.twig" %}
+		</section>
+	</div>
+{% endblock %}

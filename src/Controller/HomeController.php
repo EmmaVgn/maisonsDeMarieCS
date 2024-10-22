@@ -18,4 +18,14 @@ class HomeController extends AbstractController
             'ads' => $ads,
         ]);
     }
+
+    #[Route('/mentions-legales', name: 'mentions_legales')]
+    public function mentions (): Response
+    {
+
+        return $this->render('legalies/index.html.twig', [
+        ]);
+    }
+
+    
 }

@@ -41,100 +41,95 @@ body {
 
 h1 {
   text-align: center;
-  color: #333; /* Couleur sombre pour le titre */
+  color: #333;
   margin-bottom: 30px;
 }
 
 .card {
-  border-radius: 15px; /* Coins arrondis */
-  overflow: hidden; /* Pour masquer les débordements */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
-  transition: transform 0.2s; /* Animation au survol */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: scale(1.05); /* Zoom léger au survol */
+  transform: scale(1.05);
 }
 
 .card-header {
-  background-color: #f1f1f1; /* Couleur de fond du header */
+  background-color: #f1f1f1;
   padding: 20px;
-  border-bottom: 2px solid #ddd; /* Bordure inférieure */
+  border-bottom: 2px solid #ddd;
 }
 
 .card-header strong {
-  color: #555; /* Couleur du texte du header */
+  color: #555;
 }
 
 .card-body {
   padding: 20px;
-  background-color: #fff; /* Couleur de fond du corps de la carte */
+  background-color: #fff;
 }
 
 .card-title {
-  font-size: 1.5rem; /* Taille de police du titre */
-  color: #333; /* Couleur sombre pour le titre */
+  font-size: 1.5rem;
+  color: #333;
   margin-bottom: 10px;
 }
 
 .card-text {
-  color: #777; /* Couleur du texte d'introduction */
+  color: #777;
 }
 
 .btn-secondary {
-  background-color: #6c757d; /* Couleur personnalisée pour le bouton */
-  color: #fff; /* Couleur du texte du bouton */
+  background-color: #6c757d;
+  color: #fff;
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268; /* Couleur au survol du bouton */
+  background-color: #5a6268;
 }
 
 /*--------------------------------------------------------------
 # Logo
 --------------------------------------------------------------*/
 .logo {
-  width: 120px; /* Ajustez la largeur selon vos besoins */
-  height: auto; /* Garde les proportions de l'image */
+  width: 120px;
+  height: auto;
 }
 
 /*--------------------------------------------------------------
 # Bandeau Transparent
 --------------------------------------------------------------*/
 .bandeau-transparent {
-  position: fixed; /* Fixé en haut */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1; /* Au-dessus du contenu */
-  backdrop-filter: blur(10px); /* Flou */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.7
-  ); /* Couleur de fond semi-transparente */
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 /*--------------------------------------------------------------
 # navbar
 --------------------------------------------------------------*/
 .navbar-custom {
-  background-color: rgba(255, 255, 255, 0.7); /* Couleur de fond transparente */
-  backdrop-filter: blur(10px); /* Effet de flou en arrière-plan (facultatif) */
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
 }
 
 .navbar-custom .navbar-brand,
 .navbar-custom .nav-link,
 .navbar-custom .navbar-toggler-icon {
-  color: #000; /* Couleur des éléments de la navbar */
+  color: #000;
 }
 
 .navbar-custom .nav-link {
   position: relative;
   display: inline-block;
   text-decoration: none !important;
-  color: #000 !important; /* Couleur du texte des liens */
+  color: #000 !important;
 }
 
 .navbar-custom .nav-link::before {
@@ -144,20 +139,20 @@ h1 {
   right: 0;
   bottom: 0;
   height: 100%;
-  background: rgba(0, 0, 0, 0.1); /* Couleur de l'effet sous le lien */
-  transform: scaleX(0); /* État initial non visible */
+  background: rgba(0, 0, 0, 0.1);
+  transform: scaleX(0);
   transform-origin: bottom right;
-  transition: transform 0.25s ease-out; /* Animation de la transition */
+  transition: transform 0.25s ease-out;
 }
 
 .navbar-custom .nav-link:hover::before {
-  transform: scaleX(1); /* État lors du survol */
+  transform: scaleX(1);
   transform-origin: bottom left;
-  background: rgba(0, 0, 0, 0.097); /* Couleur de l'effet au survol */
+  background: rgba(0, 0, 0, 0.097);
 }
 
 .navbar-custom .nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Couleur de fond au survol */
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*--------------------------------------------------------------
@@ -167,32 +162,31 @@ h1 {
   position: relative;
   color: white;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  background-color: rgba(0, 0, 0, 0.5); /* Arrière-plan sombre */
-  padding: 60px 0; /* Ajustement pour ne pas chevaucher la navbar */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 60px 0;
   margin-top: 56px;
-  /* Espace pour la navbar */
 }
 
 .jumbotron {
-  position: relative; /* Position relative pour contenir les éléments enfants */
-  overflow: hidden; /* Évite que le flou déborde */
+  position: relative;
+  overflow: hidden;
 }
 
 .blur-background {
-  position: absolute; /* Position absolue pour occuper tout l'espace de la jumbotron */
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-size: cover; /* Assure que l'image couvre toute la zone */
-  background-position: center; /* Centre l'image */
-  filter: blur(2px); /* Applique le flou */
-  z-index: 0; /* Positionne derrière le contenu principal */
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  z-index: 0;
 }
 
 .custom-title {
-  color: #f8f9fa; /* Modifiez cette couleur selon votre choix */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ajoute une ombre portée pour plus de visibilité */
+  color: #f8f9fa;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   font-size: 4rem;
 }
 
@@ -204,7 +198,7 @@ h1 {
 }
 
 .card:hover {
-  transform: scale(1.05); /* Effet de zoom au survol */
+  transform: scale(1.05);
 }
 
 /*--------------------------------------------------------------
@@ -212,7 +206,7 @@ h1 {
 --------------------------------------------------------------*/
 
 .welcome-container {
-  background-color: #d4cda9; /* Beige clair */
+  background-color: #d4cda9;
   width: 100%;
   padding: 50px 0;
 }
@@ -274,21 +268,22 @@ h3 i {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Ligne de séparation en haut du footer */
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 #footer a {
-  transition: color 0.3s; /* Effet de transition pour les liens */
+  transition: color 0.3s;
+  color: white;
 }
 
 #footer a:hover {
-  color: #007bff; /* Changer la couleur au survol */
+  color: rgba(210, 209, 196, 0.725);
 }
 
 #footer {
   width: 100%;
-  margin: 0; /* S'assure qu'il n'y a pas de marge */
-  padding: 0; /* S'assure qu'il n'y a pas de padding supplémentaire */
+  margin: 0;
+  padding: 0;
 }
 
 /*--------------------------------------------------------------
@@ -382,28 +377,28 @@ h3 i {
 
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 1px solid #ccc; /* Couleur de bordure */
-  transition: transform 0.2s; /* Animation de survol */
+  border: 1px solid #ccc;
+  transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: scale(1.02); /* Légère augmentation au survol */
+  transform: scale(1.02);
 }
 
 .card-title {
-  font-size: 1.25rem; /* Taille du titre */
-  font-weight: bold; /* Gras */
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .card-text {
-  color: #555; /* Couleur du texte */
-  line-height: 1.5; /* Espacement des lignes */
+  color: #555;
+  line-height: 1.5;
 }
 
 /* Ajustement pour mobile */
 @media (max-width: 768px) {
   .col-lg-4 {
-    flex: 0 0 100%; /* 100% sur petits écrans */
+    flex: 0 0 100%;
     max-width: 100%;
   }
 }
@@ -418,27 +413,22 @@ h3 i {
 .flex-container {
   display: flex;
   height: 592px;
-  /* Hauteur fixe pour le conteneur */
 }
 .large-item {
   flex: 0 0 50%;
-  /* 50% de la largeur */
   display: flex;
   align-items: stretch;
 }
 .small-items-first,
 .small-items-second {
   flex: 0 0 25%;
-  /* 25% de la largeur */
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* Assurez que la hauteur est de 100% */
   padding-left: 8px;
 }
 .small-item {
   flex: 1;
-  /* Occupent 50% de la hauteur chacun */
   display: flex;
   align-items: stretch;
 }
@@ -845,59 +835,54 @@ gmpx-split-layout input:focus::placeholder {
 /*--------------------------------------------------------------
 # Contact-rapide
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Contact Section Styling
---------------------------------------------------------------*/
-
 .contact-section {
-  background-color: #f8f9fa; /* Couleur de fond claire */
-  border-radius: 10px; /* Coins arrondis */
-  padding: 40px; /* Espacement intérieur */
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 40px;
   max-width: 600px;
-  margin: 0 auto; /* Centrer la section */
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
-  transition: all 0.3s ease; /* Transition fluide */
+  margin: 0 auto;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .contact-section:hover {
-  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2); /* Effet hover */
+  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2);
 }
 
 .contact-section h2 {
-  font-family: "Poppins", sans-serif; /* Police élégante */
-  font-size: 2.5rem; /* Taille du titre */
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 30px; /* Espace en dessous du titre */
-  color: #343a40; /* Couleur sombre élégante */
+  margin-bottom: 30px;
+  color: #343a40;
 }
 
 .contact-section p {
-  font-size: 1.2rem; /* Taille du texte de description */
-  line-height: 1.8; /* Interligne */
-  margin-bottom: 30px; /* Espace en dessous du texte */
-  color: #6c757d; /* Couleur de texte adoucie */
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #6c757d;
 }
 
 .contact-section a.btn {
-  font-size: 1.2rem; /* Taille du texte du bouton */
-  font-weight: 600; /* Texte en gras */
-  background-color: #343a40; /* Couleur du bouton */
-  color: #fff; /* Couleur du texte */
-  border-radius: 5px; /* Coins arrondis du bouton */
-  padding: 15px 30px; /* Espacement interne du bouton */
-  text-transform: uppercase; /* Texte en majuscules */
-  transition: all 0.3s ease; /* Transition fluide */
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #343a40;
+  color: #fff;
+  border-radius: 5px;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .contact-section a.btn:hover {
-  background-color: #495057; /* Changement de couleur au hover */
-  transform: translateY(-3px); /* Léger déplacement vers le haut au hover */
+  background-color: #495057;
+  transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
   .contact-section {
     padding: 30px;
-    width: 90%; /* Ajustement pour mobile */
+    width: 90%;
   }
 
   .contact-section h2 {
@@ -915,59 +900,59 @@ gmpx-split-layout input:focus::placeholder {
 --------------------------------------------------------------*/
 
 .offers-section {
-  background-color: #f8f9fa; /* Fond clair */
-  border-radius: 10px; /* Coins arrondis */
-  padding: 40px; /* Espacement intérieur */
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 40px;
   max-width: 700px;
-  margin: 0 auto; /* Centrer la section */
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
-  transition: all 0.3s ease; /* Transition fluide */
+  margin: 0 auto;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .offers-section:hover {
-  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2); /* Effet hover */
+  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2);
 }
 
 .offers-section h2 {
-  font-family: "Poppins", sans-serif; /* Police moderne */
-  font-size: 2.5rem; /* Taille du titre */
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 30px; /* Espace en dessous du titre */
-  color: #343a40; /* Couleur sombre élégante */
+  margin-bottom: 30px;
+  color: #343a40;
 }
 
 .offers-section p {
-  font-size: 1.2rem; /* Taille du texte */
-  line-height: 1.8; /* Interligne */
-  margin-bottom: 20px; /* Espace en dessous du texte */
-  color: #6c757d; /* Couleur de texte adoucie */
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #6c757d;
 }
 
 .offers-section p span {
-  font-weight: 600; /* Accentuer la réduction */
-  color: #dc3545; /* Couleur rouge pour la promotion */
+  font-weight: 600;
+  color: #dc3545;
 }
 
 .offers-section a.btn {
-  font-size: 1.2rem; /* Taille du texte du bouton */
-  font-weight: 600; /* Texte en gras */
-  background-color: #343a40; /* Couleur du bouton */
-  color: #fff; /* Couleur du texte */
-  border-radius: 5px; /* Coins arrondis du bouton */
-  padding: 15px 30px; /* Espacement interne du bouton */
-  text-transform: uppercase; /* Texte en majuscules */
-  transition: all 0.3s ease; /* Transition fluide */
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #343a40;
+  color: #fff;
+  border-radius: 5px;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .offers-section a.btn:hover {
-  background-color: #495057; /* Changement de couleur au hover */
-  transform: translateY(-3px); /* Déplacement léger au hover */
+  background-color: #495057;
+  transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
   .offers-section {
     padding: 30px;
-    width: 90%; /* Ajustement pour mobile */
+    width: 90%;
   }
 
   .offers-section h2 {
@@ -985,44 +970,43 @@ gmpx-split-layout input:focus::placeholder {
 --------------------------------------------------------------*/
 
 .activities-section {
-  background-color: #f8f9fa; /* Fond clair */
-  border-radius: 10px; /* Coins arrondis */
-  padding: 40px; /* Espacement intérieur */
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 40px;
   max-width: 800px;
-  margin: 0 auto; /* Centrer la section */
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
-  transition: all 0.3s ease; /* Transition fluide */
+  margin: 0 auto;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .activities-section:hover {
-  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2); /* Effet hover */
+  box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2);
 }
 
 .activities-section h2 {
-  font-family: "Poppins", sans-serif; /* Police moderne */
-  font-size: 2.5rem; /* Taille du titre */
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 30px; /* Espace sous le titre */
-  color: #343a40; /* Couleur du texte */
+  margin-bottom: 30px;
+  color: #343a40;
 }
 
 .activities-section ul {
-  font-size: 1.2rem; /* Taille du texte */
-  line-height: 1.8; /* Interligne */
-  color: #6c757d; /* Couleur douce */
-  padding-left: 20px; /* Indentation des items */
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #6c757d;
+  padding-left: 20px;
 }
 
 .activities-section li {
-  margin-bottom: 15px; /* Espacement entre les éléments de la liste */
+  margin-bottom: 15px;
   position: relative;
-  padding-left: 25px; /* Indentation pour les icônes */
+  padding-left: 25px;
 }
 
 .activities-section li::before {
-  content: "•"; /* Utilisation de puces personnalisées */
-  font-size: 1.5rem; /* Taille des puces */
-  color: #28a745; /* Couleur verte */
+  content: "•";
+  font-size: 1.5rem;
   position: absolute;
   left: 0;
   top: 0;
@@ -1031,7 +1015,7 @@ gmpx-split-layout input:focus::placeholder {
 @media (max-width: 768px) {
   .activities-section {
     padding: 30px;
-    width: 90%; /* Ajustement pour mobile */
+    width: 90%;
   }
 
   .activities-section h2 {
@@ -1091,38 +1075,33 @@ gmpx-split-layout input:focus::placeholder {
 --------------------------------------------------------------*/
 /* Changez la couleur de fond du calendrier */
 .flatpickr-calendar {
-  background-color: #fff; /* Fond blanc */
+  background-color: #f6ebdf;
 }
 
 /* Modifiez la couleur des jours */
 .flatpickr-day {
-  color: #333; /* Couleur du texte */
+  color: #333;
 }
 
 /* Changez la couleur de fond des jours sélectionnés */
 .flatpickr-day.selected,
 .flatpickr-day:focus {
-  background-color: #777b7e; /* Couleur Bootstrap primary */
-  color: #fff; /* Texte blanc */
+  background-color: #777b7e;
+  color: #fff;
 }
 
 /* Changez la couleur des jours désactivés */
 .flatpickr-day.disabled {
-  background-color: #f5f5f5; /* Fond gris clair */
-  color: #ccc; /* Texte gris */
+  background-color: #f5f5f5;
+  color: #ccc;
 }
 
 /* Stylez le champ d'entrée */
 .flatpickr-input {
-  border: 1px solid #112030; /* Bordure bleue */
-  border-radius: 4px; /* Coins arrondis */
-  padding: 10px; /* Espacement intérieur */
-  font-size: 16px; /* Taille de police */
-}
-
-/* Style global pour la page de réservation */
-body {
-  background-color: #f8f9fa; /* Couleur de fond douce */
+  border: 1px solid #112030;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 /*--------------------------------------------------------------
@@ -1130,80 +1109,173 @@ body {
 --------------------------------------------------------------*/
 
 #payment-form {
-  margin-top: 20px; /* Espacement supérieur pour le formulaire */
+  margin-top: 20px;
 }
 
 .spinner {
-  display: none; /* Cacher le spinner par défaut */
+  display: none;
 }
 
 .spinner.hidden {
-  display: inline-block; /* Afficher le spinner lorsque nécessaire */
+  display: inline-block;
 }
 
 /* Style pour le bouton de paiement */
 #submit {
-  background-color: #007bff; /* Couleur du bouton */
-  border: none; /* Supprime la bordure */
-  border-radius: 4px; /* Coins arrondis */
-  padding: 10px 15px; /* Espacement intérieur */
-  color: #fff; /* Couleur du texte */
-  font-size: 16px; /* Taille de la police */
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 16px;
 }
 
 #submit:hover {
-  background-color: #0056b3; /* Couleur de fond au survol */
+  background-color: #0056b3;
 }
 
 #payment-message {
-  color: red; /* Couleur du message de paiement */
+  color: red;
 }
 
 /* Style pour les alertes */
 .alert {
-  margin-top: 20px; /* Espacement au-dessus des alertes */
+  margin-top: 20px;
 }
 
 /* Style pour l'image de réservation */
 .image-reservation {
-  object-fit: cover; /* Ajuste l'image pour qu'elle couvre le conteneur */
-  height: 100%; /* Assure que l'image remplit tout le conteneur */
-  border-radius: 8px; /* Coins arrondis pour les images */
+  object-fit: cover;
+  height: 100%;
+  border-radius: 8px;
 }
 
 /*--------------------------------------------------------------
 # Styles pour les cartes de réservation
 --------------------------------------------------------------*/
 .card {
-  border: 1px solid #e0e0e0; /* Bordure légère autour de la carte */
-  border-radius: 10px; /* Coins arrondis */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de profondeur */
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
-  padding: 20px; /* Espacement intérieur pour le contenu de la carte */
+  padding: 20px;
 }
 
 /* Style pour le texte de la carte */
 .card-title {
-  color: #333; /* Couleur du titre */
+  color: #333;
 }
 
 .guest-reservation {
-  color: #555; /* Couleur du texte des informations sur les invités */
+  color: #555;
 }
 
 /* Style pour les détails de prix */
 h5 {
-  color: #007bff; /* Couleur du titre des détails de prix */
+  color: #007bff;
 }
 
 /* Style pour le total */
 .fw-bold {
-  color: #000; /* Couleur pour le total */
+  color: #000;
 }
 
 /* Ajout de marges */
 .mb-3 {
-  margin-bottom: 1rem; /* Marge inférieure pour espacer les cartes */
+  margin-bottom: 1rem;
+}
+
+/*--------------------------------------------------------------
+# Global styling for the policy page 
+--------------------------------------------------------------*/
+.legalies-container {
+  margin-top: 150px !important;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.policy-section {
+  padding: 30px;
+  margin-bottom: 50px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sommaire-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sommaire-list li {
+  margin-bottom: 10px;
+}
+
+.sommaire-list a {
+  text-decoration: none;
+  color: #0b131d;
+  font-weight: bold;
+}
+
+.sommaire-list a:hover {
+  text-decoration: underline; /* Ajoute un soulignement au survol */
+}
+
+/* Title of each section */
+.policy-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #ff8c00;
+  padding-bottom: 10px;
+  margin-top: 30px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+/* Subheadings (like Proprietaire du site, Hébergeur) */
+.policy-content h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #ff8c00;
+}
+
+/* Paragraphs and text within each section */
+.policy-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* Styling for strong elements to highlight information */
+.policy-content p strong {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style for links, if any */
+.policy-content a {
+  color: #ff8c00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.policy-content a:hover {
+  text-decoration: underline;
+}
+
+/* Adding a bit of margin between sections */
+.policy-section + .policy-section {
+  margin-top: 50px;
+}
+
+.policy-content {
+  font-size: 1em;
+  line-height: 1.6;
 }
