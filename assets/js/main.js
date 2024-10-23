@@ -3,15 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var endDateInput = document.querySelector("#booking_form_endDateAt");
     var slug = document.querySelector('input[name="ad_slug"]').value;
     var submitBtn = document.getElementById('submit-btn');
-    var durationElement = document.getElementById('days');
-    var amountElement = document.getElementById('amount');
 
     async function fetchNotAvailableDays(slug) {
         try {
             const response = await fetch(`/api/ads/${slug}/not-available-days`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
             const data = await response.json();
             console.log('Fetched not available days:', data);
             return data;
@@ -21,18 +16,42 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function setupFlatpickr(input, notAvailableDays) {
-        flatpickr(input, {
+    function initializeFlatpickr(notAvailableDays) {
+        if (!Array.isArray(notAvailableDays)) {
+            console.error('notAvailableDays is not an array:', notAvailableDays);
+            notAvailableDays = [];
+        }
+
+        if (!startDateInput.value) {
+            startDateInput.value = new Date().toISOString().split('T')[0];
+        }
+        if (!endDateInput.value) {
+            endDateInput.value = new Date().toISOString().split('T')[0];
+        }
+
+        flatpickr(startDateInput, {
             altInput: true,
             altFormat: "j F, Y",
             dateFormat: "d.m.Y",
             locale: "fr",
             disable: notAvailableDays,
             minDate: "today",
-            defaultDate: input.value,
+            defaultDate: startDateInput.value,
             onChange: function () {
                 calculateDuration();
-                updateSubmitButtonState(); // Met à jour l'état du bouton sur changement de date
+            }
+        });
+
+        flatpickr(endDateInput, {
+            altInput: true,
+            altFormat: "j F, Y",
+            dateFormat: "d.m.Y",
+            locale: "fr",
+            disable: notAvailableDays,
+            minDate: "today",
+            defaultDate: endDateInput.value,
+            onChange: function () {
+                calculateDuration();
             }
         });
     }
@@ -40,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleFormSubmission() {
         document.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault();
-
+    
             var form = event.target;
             var formData = new FormData(form);
             var action = form.action;
-
+    
             fetch(action, {
                 method: form.method,
                 body: formData
@@ -52,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    resetForm();
                     window.location.href = data.redirect;
                 } else {
                     if (data.error) {
@@ -71,27 +89,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function showAlert(message, type = 'warning') {
+    function showAlert(message) {
+        // Créer un élément div pour afficher le message d'alerte
         var alertDiv = document.createElement('div');
-        alertDiv.className = `alert alert-${type}`; // Utilise les classes Bootstrap pour le style
+        alertDiv.className = 'alert alert-warning'; // Utilise les classes Bootstrap pour le style
         alertDiv.innerText = message;
-
+    
+        // Ajoute l'élément d'alerte en haut du formulaire
         var form = document.querySelector('form');
         form.insertBefore(alertDiv, form.firstChild);
-
+    
         // Supprime l'alerte après 5 secondes
         setTimeout(function () {
             alertDiv.remove();
         }, 5000);
     }
 
-    function resetForm() {
-        startDateInput.value = '';
-        endDateInput.value = '';
-        durationElement.textContent = '';
-        amountElement.textContent = '0.00';
-        updateSubmitButtonState();
-    }
+    fetchNotAvailableDays(slug).then(notAvailableDays => {
+        initializeFlatpickr(notAvailableDays);
+        handleFormSubmission();
+    });
 
     function calculateDuration() {
         var startDateValue = startDateInput.value;
@@ -118,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var daysDifference = timeDifference / (1000 * 3600 * 24);
         }
 
+        var durationElement = document.getElementById('days');
         durationElement.textContent = daysDifference;
 
         var priceElement = document.getElementById('priceValue');
@@ -131,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         var amount = daysDifference * price;
+        var amountElement = document.getElementById('amount');
         amountElement.textContent = amount.toFixed(2);
     }
 
@@ -138,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var parts = dateStr.split('.');
         if (parts.length === 3) {
             var day = parseInt(parts[0], 10);
-            var month = parseInt(parts[1], 10) - 1; // Les mois commencent à 0
+            var month = parseInt(parts[1], 10) - 1;
             var year = parseInt(parts[2], 10);
             return new Date(year, month, day);
         }
@@ -157,13 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Écouteurs d'événements pour les changements sur les champs de date
     startDateInput.addEventListener('change', updateSubmitButtonState);
     endDateInput.addEventListener('change', updateSubmitButtonState);
-
-    // Appel initial pour récupérer les jours non disponibles et configurer les champs de date
-    fetchNotAvailableDays(slug).then(notAvailableDays => {
-        setupFlatpickr(startDateInput, notAvailableDays);
-        setupFlatpickr(endDateInput, notAvailableDays);
-        handleFormSubmission();
-    });
 
     // Appel initial pour mettre à jour l'état du bouton de soumission
     updateSubmitButtonState();

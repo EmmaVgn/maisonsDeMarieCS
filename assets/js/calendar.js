@@ -1,4 +1,4 @@
-import { French } from "flatpickr/dist/l10n/fr.js"; 
+
 
 document.addEventListener('DOMContentLoaded', function () {
     var startDateInput = document.querySelector("#booking_form_startDateAt");

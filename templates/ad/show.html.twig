@@ -117,10 +117,10 @@
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
-	<script src="{{ asset('js/flatpickr.min.js') }}"></script>
+
 	<script>
 		// Transférer les dates non disponibles à JavaScript
 var notAvailableDays = [];{% if notAvailableDays is defined %}notAvailableDays = [{% for day in notAvailableDays %}"{{ day|date('d.m.Y') }}"{% if not loop.last %},{% endif %}{% endfor %}];{% endif %}
 	</script>
-	<script src="{{ asset('js/main.js') }}" defer></script>
+
 {% endblock %}
