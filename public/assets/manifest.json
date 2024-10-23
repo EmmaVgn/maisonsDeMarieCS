@@ -3,7 +3,7 @@
     "@symfony\/stimulus-bundle\/loader.js": "\/assets\/@symfony\/stimulus-bundle\/loader-870999a02e9fc147c034d522826ea70d.js",
     "@symfony\/ux-turbo\/turbo_controller.js": "\/assets\/@symfony\/ux-turbo\/turbo_controller-ce5e32dafdec0b7752f02e3e2cb25751.js",
     "@symfony\/ux-turbo\/turbo_stream_controller.js": "\/assets\/@symfony\/ux-turbo\/turbo_stream_controller-a9d0d06c48318d35cc0e0aa27ef6b2dc.js",
-    "app.js": "\/assets\/app-ba174fa99aa306293c1d78f853b65810.js",
+    "app.js": "\/assets\/app-a489f7e3e9f29c64db75ae148f4e28c4.js",
     "bundles\/easyadmin\/app.8906cebf.css": "\/assets\/bundles\/easyadmin\/app.8906cebf-8ba26d7f67e7a923dc693574402f4588.css",
     "bundles\/easyadmin\/app.8906cebf.rtl.css": "\/assets\/bundles\/easyadmin\/app.8906cebf.rtl-91595e08002cea70d6eb425642814c04.css",
     "bundles\/easyadmin\/app.aa57e76f.js": "\/assets\/bundles\/easyadmin\/app.aa57e76f-feba3d9ef9bf3b6ad158e3430352b9e3.js",
