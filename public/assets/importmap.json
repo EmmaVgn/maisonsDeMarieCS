@@ -1,0 +1,50 @@
+{
+    "app": {
+        "path": "\/assets\/app-a489f7e3e9f29c64db75ae148f4e28c4.js",
+        "type": "js"
+    },
+    "\/assets\/styles\/app.css": {
+        "path": "\/assets\/styles\/app-57aff7d051f3f9c32731bfea38ef3c14.css",
+        "type": "css"
+    },
+    "\/assets\/js\/main.js": {
+        "path": "\/assets\/js\/main-c464d5f1fe10f9bd93bfccfd4bdf1853.js",
+        "type": "js"
+    },
+    "\/assets\/js\/calendar.js": {
+        "path": "\/assets\/js\/calendar-c464d5f1fe10f9bd93bfccfd4bdf1853.js",
+        "type": "js"
+    },
+    "\/assets\/js\/flatpickr.min.js": {
+        "path": "\/assets\/js\/flatpickr.min-f53461086879c8c9f1833ebb230967b5.js",
+        "type": "js"
+    },
+    "\/assets\/js\/payment.js": {
+        "path": "\/assets\/js\/payment-76559e981156d6d16d313c3c07bd08e1.js",
+        "type": "js"
+    },
+    "@symfony\/stimulus-bundle": {
+        "path": "\/assets\/@symfony\/stimulus-bundle\/loader-870999a02e9fc147c034d522826ea70d.js",
+        "type": "js"
+    },
+    "\/assets\/@symfony\/stimulus-bundle\/controllers.js": {
+        "path": "\/assets\/@symfony\/stimulus-bundle\/controllers-9d42643c079ab11f27a3a9614f81cc2f.js",
+        "type": "js"
+    },
+    "\/assets\/@symfony\/ux-turbo\/turbo_controller.js": {
+        "path": "\/assets\/@symfony\/ux-turbo\/turbo_controller-ce5e32dafdec0b7752f02e3e2cb25751.js",
+        "type": "js"
+    },
+    "\/assets\/controllers\/hello_controller.js": {
+        "path": "\/assets\/controllers\/hello_controller-55882fcad241d2bea50276ea485583bc.js",
+        "type": "js"
+    },
+    "@hotwired\/stimulus": {
+        "path": "\/assets\/vendor\/@hotwired\/stimulus\/stimulus.index-b5b1d00e42695b8959b4a1e94e3bc92a.js",
+        "type": "js"
+    },
+    "@hotwired\/turbo": {
+        "path": "\/assets\/vendor\/@hotwired\/turbo\/turbo.index-57ab2adf076a10f2234da506ad1d5a0d.js",
+        "type": "js"
+    }
+}
