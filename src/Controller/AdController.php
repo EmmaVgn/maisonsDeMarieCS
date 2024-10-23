@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Psr\Log\LoggerInterface;
 
 class AdController extends AbstractController
 {
@@ -51,16 +52,23 @@ class AdController extends AbstractController
     }
 
     #[Route('/api/ads/{slug}/not-available-days', name: 'ads_not_available_days', methods: ['GET'])]
-    public function getNotAvailableDays($slug, AdRepository $adRepository): JsonResponse
+    public function getNotAvailableDays($slug, AdRepository $adRepository, LoggerInterface $logger): JsonResponse
     {
         $ad = $adRepository->findOneBy(['slug' => $slug]);
         if (!$ad) {
             return $this->json(['error' => 'Ad not found'], 404);
         }
+        
         $notAvailableDays = $ad->getNotAvailableDays();
+        
+        // Log the days for debugging
+        $logger->info('Not available days: ', ['days' => $notAvailableDays]);
+    
         $formattedDays = array_map(function ($day) {
             return $day->format('d.m.Y');
         }, $notAvailableDays);
+        
         return $this->json($formattedDays);
     }
+    
 }

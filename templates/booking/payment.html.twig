@@ -39,3 +39,14 @@
 		</div>
 	</div>
 {% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://js.stripe.com/v3/"></script>
+	<script>
+		const clientSecret = '{{ clientSecret }}';
+const stripePublicKey = '{{ stripePublicKey }}';
+const redirectAfterSuccessUrl = '{{ url('booking_payment_success', {'id': booking.id}) }}';
+	</script>
+	<script src="{{ asset('assets/js/payment.js') }}" defer></script>
+{% endblock %}

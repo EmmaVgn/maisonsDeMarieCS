@@ -1,115 +1,81 @@
-// assets/js/main.js
-
 document.addEventListener('DOMContentLoaded', function () {
     var startDateInput = document.querySelector("#booking_form_startDateAt");
     var endDateInput = document.querySelector("#booking_form_endDateAt");
     var slug = document.querySelector('input[name="ad_slug"]').value;
     var submitBtn = document.getElementById('submit-btn');
+    var durationElement = document.getElementById('days');
+    var amountElement = document.getElementById('amount');
 
     async function fetchNotAvailableDays(slug) {
         try {
             const response = await fetch(`/api/ads/${slug}/not-available-days`);
-            const data_1 = await response.json();
-            console.log('Fetched not available days:', data_1);
-            return data_1;
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Fetched not available days:', data);
+            return data;
         } catch (error) {
             console.error('Error fetching not available days:', error);
             return [];
         }
     }
 
-    function initializeFlatpickr(notAvailableDays) {
-        if (!Array.isArray(notAvailableDays)) {
-            console.error('notAvailableDays is not an array:', notAvailableDays);
-            notAvailableDays = [];
-        }
-    
-        // Définit les valeurs par défaut pour les champs de date
-        if (!startDateInput.value) {
-            startDateInput.value = new Date().toISOString().split('T')[0];
-        }
-        if (!endDateInput.value) {
-            endDateInput.value = new Date().toISOString().split('T')[0];
-        }
-    
-        // Initialisation de Flatpickr pour le champ de date de début
-        flatpickr(startDateInput, {
-            locale: "fr", // Utilisez "fr"
+    function setupFlatpickr(input, notAvailableDays) {
+        flatpickr(input, {
             altInput: true,
             altFormat: "j F, Y",
             dateFormat: "d.m.Y",
+            locale: "fr",
             disable: notAvailableDays,
             minDate: "today",
-            defaultDate: startDateInput.value,
+            defaultDate: input.value,
             onChange: function () {
                 calculateDuration();
-                updateSubmitButtonState();
-            }
-        });
-    
-        // Initialisation de Flatpickr pour le champ de date de fin
-        flatpickr(endDateInput, {
-            locale: "fr", // Utilisez "fr"
-            altInput: true,
-            altFormat: "j F, Y",
-            dateFormat: "d.m.Y",
-            disable: notAvailableDays,
-            minDate: "today",
-            defaultDate: endDateInput.value,
-            onChange: function () {
-                calculateDuration();
-                updateSubmitButtonState();
+                updateSubmitButtonState(); // Met à jour l'état du bouton sur changement de date
             }
         });
     }
-    
 
-// Fonction pour gérer la soumission du formulaire
-function handleFormSubmission() {
-    document.querySelector('form').addEventListener('submit', function (event) {
-        event.preventDefault();
-        var form = event.target;
-        var formData = new FormData(form);
-        var action = form.action;
+    function handleFormSubmission() {
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        fetch(action, {
-            method: form.method,
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                window.location.href = data.redirect;
-            } else {
-                // Gestion des erreurs
-                if (data.error) {
-                    showAlert(data.error);
-                } else if (data.errors) {
-                    data.errors.forEach(error => {
-                        showAlert(error);
-                    });
+            var form = event.target;
+            var formData = new FormData(form);
+            var action = form.action;
+
+            fetch(action, {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resetForm();
+                    window.location.href = data.redirect;
+                } else {
+                    if (data.error) {
+                        showAlert(data.error);
+                    } else if (data.errors) {
+                        data.errors.forEach(error => {
+                            showAlert(error);
+                        });
+                    }
                 }
-            }
-        })
-        .catch(error => {
-            console.error('Form submission error:', error);
-            showAlert('Une erreur s\'est produite lors de la soumission du formulaire. Veuillez réessayer.');
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                showAlert('Une erreur s\'est produite lors de la soumission du formulaire. Veuillez réessayer.');
+            });
         });
-    });
-}
+    }
 
-    function showAlert(message) {
-        // Créer un élément div pour afficher le message d'alerte
+    function showAlert(message, type = 'warning') {
         var alertDiv = document.createElement('div');
-        alertDiv.className = 'alert alert-warning'; // Utilise les classes Bootstrap pour le style
+        alertDiv.className = `alert alert-${type}`; // Utilise les classes Bootstrap pour le style
         alertDiv.innerText = message;
 
-        // Ajoute l'élément d'alerte en haut du formulaire
         var form = document.querySelector('form');
         form.insertBefore(alertDiv, form.firstChild);
 
@@ -119,10 +85,13 @@ function handleFormSubmission() {
         }, 5000);
     }
 
-    fetchNotAvailableDays(slug).then(notAvailableDays => {
-        initializeFlatpickr(notAvailableDays);
-        handleFormSubmission();
-    });
+    function resetForm() {
+        startDateInput.value = '';
+        endDateInput.value = '';
+        durationElement.textContent = '';
+        amountElement.textContent = '0.00';
+        updateSubmitButtonState();
+    }
 
     function calculateDuration() {
         var startDateValue = startDateInput.value;
@@ -149,7 +118,6 @@ function handleFormSubmission() {
             var daysDifference = timeDifference / (1000 * 3600 * 24);
         }
 
-        var durationElement = document.getElementById('days');
         durationElement.textContent = daysDifference;
 
         var priceElement = document.getElementById('priceValue');
@@ -163,39 +131,40 @@ function handleFormSubmission() {
         }
 
         var amount = daysDifference * price;
-
-        var totalPriceElement = document.getElementById('totalPrice');
-        totalPriceElement.textContent = amount.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
-
-        // Contrôle la validité de la soumission du formulaire
-        if (daysDifference < 2) {
-            console.log("La réservation doit être d'au moins deux nuits.");
-            submitBtn.disabled = true;
-        } else {
-            console.log("La réservation est valide.");
-            submitBtn.disabled = false;
-        }
+        amountElement.textContent = amount.toFixed(2);
     }
 
     function parseDate(dateStr) {
-        var dateParts = dateStr.split('.');
-
-        if (dateParts.length !== 3) {
-            console.error("Le format de la date n'est pas valide : ", dateStr);
-            return null;
+        var parts = dateStr.split('.');
+        if (parts.length === 3) {
+            var day = parseInt(parts[0], 10);
+            var month = parseInt(parts[1], 10) - 1; // Les mois commencent à 0
+            var year = parseInt(parts[2], 10);
+            return new Date(year, month, day);
         }
-
-        var day = parseInt(dateParts[0], 10);
-        var month = parseInt(dateParts[1], 10) - 1;
-        var year = parseInt(dateParts[2], 10);
-
-        var date = new Date(year, month, day);
-
-        if (isNaN(date.getTime())) {
-            console.error("La date n'est pas valide : ", dateStr);
-            return null;
-        }
-
-        return date;
+        return null;
     }
+
+    // Fonction pour mettre à jour l'état du bouton de soumission
+    function updateSubmitButtonState() {
+        if (!startDateInput.value || !endDateInput.value) {
+            submitBtn.disabled = true; // Désactive le bouton si les champs de date sont vides
+        } else {
+            submitBtn.disabled = false; // Active le bouton si les champs de date sont remplis
+        }
+    }
+
+    // Écouteurs d'événements pour les changements sur les champs de date
+    startDateInput.addEventListener('change', updateSubmitButtonState);
+    endDateInput.addEventListener('change', updateSubmitButtonState);
+
+    // Appel initial pour récupérer les jours non disponibles et configurer les champs de date
+    fetchNotAvailableDays(slug).then(notAvailableDays => {
+        setupFlatpickr(startDateInput, notAvailableDays);
+        setupFlatpickr(endDateInput, notAvailableDays);
+        handleFormSubmission();
+    });
+
+    // Appel initial pour mettre à jour l'état du bouton de soumission
+    updateSubmitButtonState();
 });

@@ -12,4 +12,3 @@ import './js/payment.js';
 
 // import './js/flatpickr.js';
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
-
