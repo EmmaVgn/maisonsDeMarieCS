@@ -7,19 +7,19 @@ vich_uploader:
   mappings:
     ads:
       uri_prefix: /images/ads
-      upload_destination: "%kernel.project_dir%/public/assets/images/ads"
+      upload_destination: "%kernel.project_dir%/public/images/ads"
       namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
       delete_on_update: true
       delete_on_remove: true
     avatars_images:
       uri_prefix: /images/avatars
-      upload_destination: "%kernel.project_dir%/public/assets/images/avatars"
+      upload_destination: "%kernel.project_dir%/public/images/avatars"
       namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
       delete_on_update: true
       delete_on_remove: true
     icones_images:
       uri_prefix: /images/icones
-      upload_destination: "%kernel.project_dir%/public/assets/images/icones"
+      upload_destination: "%kernel.project_dir%/public/images/icones"
       namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
       delete_on_update: true
       delete_on_remove: true
