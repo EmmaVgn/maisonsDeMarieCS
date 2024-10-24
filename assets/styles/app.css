@@ -8,11 +8,11 @@
 }
 
 body {
-  font-family: "Lora", serif;
+  font-family: "Montserrat", sans-serif; /* Police principale */
   position: relative;
   height: 100%;
   text-decoration: none;
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; /* Couleur de fond légère */
 }
 
 a {
@@ -23,15 +23,11 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Montserrat", serif;
+  font-family: "Montserrat", serif; /* Changement de police pour les titres */
 }
 
 .custom-top {
   margin-top: 100px;
-}
-body {
-  font-family: "Montserrat", sans-serif;
-  background-color: #f8f9fa; /* Couleur de fond légère */
 }
 
 .ads-container {
@@ -45,6 +41,9 @@ h1 {
   margin-bottom: 30px;
 }
 
+/*--------------------------------------------------------------
+    Card Styles
+  --------------------------------------------------------------*/
 .card {
   border-radius: 15px;
   overflow: hidden;
@@ -81,6 +80,17 @@ h1 {
   color: #777;
 }
 
+.card {
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/*--------------------------------------------------------------
+    Boutons
+  --------------------------------------------------------------*/
 .btn-secondary {
   background-color: #6c757d;
   color: #fff;
@@ -91,6 +101,38 @@ h1 {
 }
 
 /*--------------------------------------------------------------
+    Jumbotron + Bandeau Transparent
+  --------------------------------------------------------------*/
+.jumbotron {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.blur-background {
+  background-image: url("../images/castille.jpg");
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  filter: blur(8px);
+  background-size: cover;
+  background-position: center;
+}
+
+.jumbotron-container {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin-top: 200px;
+}
+
+/*--------------------------------------------------------------
   # Logo
   --------------------------------------------------------------*/
 .logo {
@@ -98,107 +140,18 @@ h1 {
   height: auto;
 }
 
-/*--------------------------------------------------------------
-  # Bandeau Transparent
-  --------------------------------------------------------------*/
-.bandeau-transparent {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.7);
+.logo-footer {
+  width: 250px;
+  height: auto;
+  margin: 0 auto;
+  margin-left: 90%;
 }
 
 /*--------------------------------------------------------------
-  # navbar
+  # Footer
   --------------------------------------------------------------*/
-.navbar-custom {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-}
-
-.navbar-custom .navbar-brand,
-.navbar-custom .nav-link,
-.navbar-custom .navbar-toggler-icon {
-  color: #000;
-}
-
-.navbar-custom .nav-link {
-  position: relative;
-  display: inline-block;
-  text-decoration: none !important;
-  color: #000 !important;
-}
-
-.navbar-custom .nav-link::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.navbar-custom .nav-link:hover::before {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-  background: rgba(0, 0, 0, 0.097);
-}
-
-.navbar-custom .nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/*--------------------------------------------------------------
-  # Jumbotron
-  --------------------------------------------------------------*/
-.jumbotron {
-  position: relative;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 60px 0;
-  margin-top: 56px;
-}
-
-.jumbotron {
-  position: relative;
-  overflow: hidden;
-}
-
-.blur-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: cover;
-  background-position: center;
-  filter: blur(2px);
-  z-index: 0;
-}
-
-.custom-title {
-  color: #f8f9fa;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  font-size: 4rem;
-}
-
-/*--------------------------------------------------------------
-  # Card
-  --------------------------------------------------------------*/
-.card {
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
+.footer-contact {
+  margin-top: 230px;
 }
 
 /*--------------------------------------------------------------

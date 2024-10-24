@@ -46,7 +46,7 @@ class UserCrudController extends AbstractCrudController
                 ->setColumns(6),
             EmailField::new('email', 'Email :')
                 ->setFormTypeOptions(['attr' => ['placeholder' => 'Email de l\'utilisateur']]),
-            TextField::new('adress', 'Adresse :')
+            TextField::new('address', 'Adresse :')
                 ->setFormTypeOptions(['attr' => ['placeholder' => 'Adresse de l\'utilisateur']])
                 ->setColumns(6)
                 ->hideOnIndex(),
