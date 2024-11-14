@@ -31,12 +31,12 @@ class ContactController extends AbstractController
             $em->flush();
 
             $mail->sendEmail(
-                'contact@cameleon-solutions.fr', // From : ton email
-                'Caméléon Solution',             // Nom de l'expéditeur
-                'contact@cameleon-solutions.fr', // To : ton email de réception
-                'Nouvelle demande de contact',   // Sujet
-                'contact',                       // Template Twig pour l'email
-                ['contact' => $contact]          // Contexte
+                'contact@cameleon-solutions.fr',
+                'Demande de contact',
+                'contact@cameleon-solutions.fr',
+                'Demande de contact',
+                'contact',
+                ['contact' => $contact]
             );
             
 

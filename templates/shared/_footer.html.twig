@@ -1,37 +1,37 @@
-<footer class="bg-dark text-white text-center py-4" id="footer">
+<footer class="bg-light text-dark text-center py-4" id="footer">
 	<div class="container p-4">
 		<div class="d-flex justify-content-between align-items-start mb-4">
 			<div class="w-50 text-start">
 				<a class="navbar-brand" href="{{ path('homepage')}} ">
-					<img src="{{ asset('images/logo.png') }}" alt="Logo Les maisons de Marie" class="logo-footer">
+					<img src="{{ asset('images/logo.png') }}" alt="Logo Les maisons de Marie" class="logo-footer text-dark">
 				</a>
 				<p>Découvrez l'authenticité du Périgord dans nos maisons de charme du 18ème siècle, où le confort rencontre l'histoire.</p>
 
 			</div>
-			<div class="w-50 text-end footer-contact">
+			<div class="w-50 text-end text-dark footer-contact">
 				<p>Contact : +33 6 09 06 43 01</p>
-				<a href="mailto:marievigneron4511@hotmail.fr">Email: marievigneron4511@hotmail.fr</a>
+				<a class="text-dark" href="mailto:marievigneron4511@hotmail.fr">Email: marievigneron4511@hotmail.fr</a>
 				<p>Adresse : 123 Rue des Maisons, 24560 Castillonnes, France</p>
 			</div>
 		</div>
 		<div class="text-center">
 			<ul class="list-inline mb-0">
 				<li class="list-inline-item">
-					<a href="{{ path('homepage')}} " class="text-white">Accueil</a>
+					<a href="{{ path('homepage')}} " class="text-dark">Accueil</a>
 				</li>
 				<li class="list-inline-item">
-					<a href="# " class="text-white">Mes hébergements</a>
+					<a href="{{ path('ads_index')}} " class="text-dark">Mes hébergements</a>
 				</li>
 				<li class="list-inline-item">
-					<a href="# " class="text-white">Contact</a>
+					<a href="{{ path('contact')}} " class="text-dark">Contact</a>
 				</li>
 				<li class="list-inline-item">
-					<a href="#" class="text-white">Mentions légales</a>
+					<a href="#" class="text-dark">Mentions légales</a>
 				</li>
 			</ul>
 		</div>
 		<hr
-		class="text-white mb-3">
+		class="text-dark mb-3">
 		<!-- Ligne de séparation -->
 		<p class="mb-0">© 2024 Les Maisons de Marie. Tous droits réservés.</p>
 		<hr class="text-white mt-3">
