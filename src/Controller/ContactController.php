@@ -31,13 +31,14 @@ class ContactController extends AbstractController
             $em->flush();
 
             $mail->sendEmail(
-                'no-reply@monsite.net',
-                'Demande de contact',
-                'contact@sfr.fr',
-                'Demande de contact',
-                'contact',
-                ['contact' => $contact]
+                'contact@cameleon-solutions.fr', // From : ton email
+                'Caméléon Solution',             // Nom de l'expéditeur
+                'contact@cameleon-solutions.fr', // To : ton email de réception
+                'Nouvelle demande de contact',   // Sujet
+                'contact',                       // Template Twig pour l'email
+                ['contact' => $contact]          // Contexte
             );
+            
 
             $this->addFlash('success', 'Votre demande de contact a été envoyée');
             return $this->redirectToRoute('homepage');
